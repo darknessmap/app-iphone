@@ -40,11 +40,15 @@ class testApp : public ofxiPhoneApp{
         string getTimeStamp();
         string pad(int value);
     
-        private GeoPayloadVO _geoVO;
+        void _createGateway();
+        void _createPayload();
     
-        private Properties 	_config;
+    //JAVA classes - translate to Obj-C
+        //private GeoPayloadVO _geoVO;
     
-        private Gateway 	_gateway;
+        //private Properties 	_config;
+    
+        //private Gateway     _gateway;
 
     
 		ofVideoGrabber grabber;

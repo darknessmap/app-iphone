@@ -10,7 +10,7 @@ void testApp::setup(){
     // dump lots of info to console (useful for debugging)
 	ofSetLogLevel(OF_LOG_VERBOSE);
     
-	ofxiPhoneSetOrientation(OFXIPHONE_ORIENTATION_LANDSCAPE_RIGHT);
+	//ofxiPhoneSetOrientation(OFXIPHONE_ORIENTATION_LANDSCAPE_RIGHT);
 
 	ofSetFrameRate(30);
     
@@ -28,7 +28,7 @@ void testApp::setup(){
 
     // setup sensors
     ofRegisterTouchEvents(this);
-    ofxiPhoneSetOrientation(OFXIPHONE_ORIENTATION_PORTRAIT);
+    ofxiPhoneSetOrientation(OFXIPHONE_ORIENTATION_LANDSCAPE_RIGHT);
     coreLocation = new ofxiPhoneCoreLocation();
     hasGPS = coreLocation->startLocation();
     //[UIApplication sharedApplication].idleTimerDisabled = YES;
@@ -64,15 +64,12 @@ void testApp::update(){
 	for(int k = 0; k < totalPix; k+= 3){
 		
         // redValues
-        //pix[k  ] = 255 - src[k];
         redVals += src[k];
         
         // green values
-		//pix[k+1] = 255 - src[k+1];
         greenVals += src[k+1];
         
         // blue values
-		//pix[k+2] = 255 - src[k+2];
         blueVals += src[k+2];
 	}
     
@@ -134,9 +131,7 @@ void testApp::draw(){
 	
 	ofSetColor(255);
 	grabber.draw(0, 0);
-	
-	//tex.draw(0, 0, tex.getWidth() / 4, tex.getHeight() / 4);
-    
+	    
     //JAVA
     // Draw Location
     _drawLocationText(longitude, latitude, marginWidth);
@@ -151,7 +146,7 @@ void testApp::draw(){
 //--------------------------------------------------------------
 void testApp::calculateIntensityHistogram(int* rgb, int* histogram, int width, int height, int component){
     
-    for (int bin = 0; bin < 256; bin++) {
+    for (int bin = 0; bin < 256; bin++) { // for Android the bin value is 256, what is it for iPhone?
         histogram[bin] = 0;
     } //bin
     
@@ -226,7 +221,7 @@ string testApp::pad(int value)
 void testApp::_drawTimeStamp(int marginWidth) {
 
     //string TimeBrightness = "Time: "+ ofToString(ofGetTimestampString()) + " Brightness: " + ofToString(averageBrightness);
-    string TimeBrightness = "Time: " + ofToString(getTimestamp());
+    string TimeBrightness = "Time: " + ofToString(getTimeStamp());
     ofSetColor(0, 0, 0); // rgb value for black
     font.drawString(TimeBrightness, marginWidth + 10-1, 60-1);
     font.drawString(TimeBrightness, marginWidth + 10+1, 60-1);
@@ -248,7 +243,7 @@ void testApp::_drawBrightnessText(double averageBrightness, int marginWidth) {
     
     // Translate from Java
     //string TimeBrightness = "Time: "+ ofToString(ofGetTimestampString()) + " Brightness: " + ofToString(averageBrightness);
-    string TimeBrightness = "Time: " + ofToString(getTimestamp()) + " Brightness: " + ofToString(averageBrightness);
+    string TimeBrightness = "Time: " + ofToString(getTimeStamp()) + " Brightness: " + ofToString(averageBrightness);
     ofSetColor(0, 0, 0); // rgb value for black
     font.drawString(TimeBrightness, marginWidth + 10-1, 60-1);
     font.drawString(TimeBrightness, marginWidth + 10+1, 60-1);
@@ -302,21 +297,21 @@ void testApp::sendPayload() {
  */
 void testApp::_createPayload()
 {
-    _geoVO = new GeoPayloadVO();
-    String sid = Session.id();
-    String uid = Installation.id(this.getBaseContext());
-    _geoVO.setSid(sid);
-    _geoVO.setUid(uid);
+    //_geoVO = new GeoPayloadVO();
+    //String sid = Session.id();
+    //String uid = Installation.id(this.getBaseContext());
+    //_geoVO.setSid(sid);
+    //_geoVO.setUid(uid);
 }
 
 //--------------------------------------------------------------
 
 void testApp::_createGateway() {
     
-    String api = _config.getProperty("API");
-    _gateway = new Gateway();
-    _gateway.setUrl(api);
-    _gateway.initialize();
+    //String api = _config.getProperty("API");
+    //_gateway = new Gateway();
+    //_gateway.setUrl(api);
+    //_gateway.initialize();
     
 }
 
