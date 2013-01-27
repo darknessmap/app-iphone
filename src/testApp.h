@@ -75,7 +75,6 @@ class testApp : public ofxiPhoneApp{
     
         ofxiPhoneCoreLocation * coreLocation;
         bool hasGPS;
-        float heading;
     
         // GPS data. (string values were added so not to duplicate on ofToString conversions)
         double latitude;

@@ -10,8 +10,6 @@ void testApp::setup(){
     // dump lots of info to console (useful for debugging)
 	ofSetLogLevel(OF_LOG_VERBOSE);
     
-	//ofxiPhoneSetOrientation(OFXIPHONE_ORIENTATION_LANDSCAPE_RIGHT);
-
 	ofSetFrameRate(30);
     
     // load font for displaying info
@@ -21,8 +19,8 @@ void testApp::setup(){
     
     // DEFAULT properties (can't set from header, boooo!)
     // gps + compass
-    latitude = 0;
-    longitude = 0;
+    latitude = 0.0;
+    longitude = 0.0;
     latitudeStr = "0.000000";
     longitudeStr = "0.000000";
 
@@ -50,6 +48,7 @@ void testApp::update(){
 	ofBackground(255,255,255);	
 	
 	grabber.update();
+    updateLocation();
 	
 	unsigned char * src = grabber.getPixels();
 	int totalPix = grabber.width * grabber.height * 3;
@@ -264,7 +263,7 @@ void testApp::_drawBrightnessText(double averageBrightness, int marginWidth) {
 void testApp::_drawLocationText(double longitude, double latitude, int marginWidth) {
     
     //Translate from Java
-    string LocationValues = "Lat: " + latitudeStr + " Long: " + longitudeStr;
+    string LocationValues = "Lat: " + latitudeStr + " Lon: " + longitudeStr;
     ofSetColor(0, 0, 0); // rgb value for black
     font.drawString(LocationValues, marginWidth + 10-1, 30-1);
     font.drawString(LocationValues, marginWidth + 10+1, 30-1);
