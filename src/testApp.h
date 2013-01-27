@@ -33,6 +33,19 @@ class testApp : public ofxiPhoneApp{
         void _drawBrightnessText(double averageBrightness, int marginWidth);
         void _drawLocationText(double longitude, double latitude, int marginWidth);
         void sendPayload();
+        
+        void _drawTimeStamp(int marginWidth);
+    
+        void updateLocation();
+        string getTimeStamp();
+        string pad(int value);
+    
+        private GeoPayloadVO _geoVO;
+    
+        private Properties 	_config;
+    
+        private Gateway 	_gateway;
+
     
 		ofVideoGrabber grabber;
 		ofTexture tex;
@@ -63,8 +76,8 @@ class testApp : public ofxiPhoneApp{
         // GPS data. (string values were added so not to duplicate on ofToString conversions)
         double latitude;
         double longitude;
-        //string currentLatitudeStr;
-        //string currentLongitudeStr;
+        string latitudeStr;
+        string longitudeStr;
 
     
     /**

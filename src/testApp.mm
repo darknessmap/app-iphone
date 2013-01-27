@@ -17,14 +17,14 @@ void testApp::setup(){
     // load font for displaying info
 	font.loadFont("verdana.ttf", 12, true, true);
     font.setLineHeight(18.0f);
-	font.setLetterSpacing(1.037);
+	font.setLetterSpacing(1.027);
     
     // DEFAULT properties (can't set from header, boooo!)
     // gps + compass
     latitude = 0;
     longitude = 0;
-    //currentLatitudeStr = "0.000000";
-    //currentLongitudeStr = "0.000000";
+    latitudeStr = "0.000000";
+    longitudeStr = "0.000000";
 
     // setup sensors
     ofRegisterTouchEvents(this);
@@ -139,7 +139,7 @@ void testApp::draw(){
     
     //JAVA
     // Draw Location
-    //_drawLocationText(longitude, latitude, marginWidth);
+    _drawLocationText(longitude, latitude, marginWidth);
     
     // Draw Time and AverageBrightness Value
     _drawBrightnessText(_averageBrightness, marginWidth);
@@ -200,6 +200,44 @@ void testApp::drawBrightnessHistogram(int width, int height, int marginWidth) {
 }
 
 //--------------------------------------------------------------
+// timestamp help
+string testApp::getTimeStamp()
+{
+    string theYear = ofToString(ofGetYear()).substr(2); // just get the last 2 digits of the year (2011 > 11)
+    return pad(ofGetMonth()) + "-" + pad(ofGetDay()) + "-" +  theYear + " " + pad(ofGetHours()) + ":" + pad(ofGetMinutes()) + ":" + pad(ofGetSeconds());
+}
+
+//--------------------------------------------------------------
+// adds a leading zero
+string testApp::pad(int value)
+{
+    if(value < 10) return "0" + ofToString(value);
+    
+    return ofToString(value);
+}
+
+//--------------------------------------------------------------
+/**
+ *
+ * @param canvas
+ * @param averageBrightness
+ * @param marginWidth
+ */
+void testApp::_drawTimeStamp(int marginWidth) {
+
+    //string TimeBrightness = "Time: "+ ofToString(ofGetTimestampString()) + " Brightness: " + ofToString(averageBrightness);
+    string TimeBrightness = "Time: " + ofToString(getTimestamp());
+    ofSetColor(0, 0, 0); // rgb value for black
+    font.drawString(TimeBrightness, marginWidth + 10-1, 60-1);
+    font.drawString(TimeBrightness, marginWidth + 10+1, 60-1);
+    font.drawString(TimeBrightness, marginWidth + 10+1, 60+1);
+    font.drawString(TimeBrightness, marginWidth + 10-1, 60+1);
+    ofSetColor(255, 255, 0); // rgb value for yellow;
+    font.drawString(TimeBrightness, marginWidth + 10,   60);
+}
+
+
+//--------------------------------------------------------------
 /**
  *
  * @param canvas
@@ -209,7 +247,8 @@ void testApp::drawBrightnessHistogram(int width, int height, int marginWidth) {
 void testApp::_drawBrightnessText(double averageBrightness, int marginWidth) {
     
     // Translate from Java
-    string TimeBrightness = "Time: "+ ofToString(ofGetTimestampString()) + " Brightness: " + ofToString(averageBrightness);
+    //string TimeBrightness = "Time: "+ ofToString(ofGetTimestampString()) + " Brightness: " + ofToString(averageBrightness);
+    string TimeBrightness = "Time: " + ofToString(getTimestamp()) + " Brightness: " + ofToString(averageBrightness);
     ofSetColor(0, 0, 0); // rgb value for black
     font.drawString(TimeBrightness, marginWidth + 10-1, 60-1);
     font.drawString(TimeBrightness, marginWidth + 10+1, 60-1);
@@ -230,7 +269,7 @@ void testApp::_drawBrightnessText(double averageBrightness, int marginWidth) {
 void testApp::_drawLocationText(double longitude, double latitude, int marginWidth) {
     
     //Translate from Java
-    string LocationValues = "Latitude: " + ofToString(latitude) + " Longitude: " + ofToString(longitude);
+    string LocationValues = "Lat: " + latitudeStr + " Long: " + longitudeStr;
     ofSetColor(0, 0, 0); // rgb value for black
     font.drawString(LocationValues, marginWidth + 10-1, 30-1);
     font.drawString(LocationValues, marginWidth + 10+1, 30-1);
@@ -256,6 +295,41 @@ void testApp::sendPayload() {
 
 }
 
+//--------------------------------------------------------------
+/**
+ * Initialize payload object. Set unique app/device id and
+ * the sessions id.
+ */
+void testApp::_createPayload()
+{
+    _geoVO = new GeoPayloadVO();
+    String sid = Session.id();
+    String uid = Installation.id(this.getBaseContext());
+    _geoVO.setSid(sid);
+    _geoVO.setUid(uid);
+}
+
+//--------------------------------------------------------------
+
+void testApp::_createGateway() {
+    
+    String api = _config.getProperty("API");
+    _gateway = new Gateway();
+    _gateway.setUrl(api);
+    _gateway.initialize();
+    
+}
+
+//--------------------------------------------------------------
+//Gets GPS data
+void testApp::updateLocation() {
+    if (hasGPS) {
+        latitude = coreLocation->getLatitude();
+        longitude = coreLocation->getLongitude();
+        latitudeStr = ofToString(latitude, 6);
+        longitudeStr = ofToString(longitude, 6);
+    }
+}
 
 //--------------------------------------------------------------
 void testApp::exit(){
