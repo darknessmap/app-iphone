@@ -35,20 +35,34 @@ void testApp::setup(){
     
     //VidGrabber setup
 	grabber.initGrabber(480, 360, OF_PIXELS_BGRA);
+    //grabber.setUseTexture(false);
     
     //width = grabber.getWidth();
     //height = grabber.getHeight();
     
     width = ofGetWidth();
     height = ofGetHeight();
+    canvasWidth = width;
+    canvasHeight = 50;
     
-    
-    histogramWidth = width;
-	
     brightnessHistory = new double[histogramWidth];
 	pix = new unsigned char[ (int)( width * height * 3.0) ];
     
-    canvas.allocate(width, 100, GL_RGBA);
+    canvas.allocate(canvasWidth, canvasHeight, GL_RGBA);
+    canvasPixels = new unsigned char [canvasWidth * canvasHeight *4];
+    
+    //set canvas (for histogram) pixels to alpha initially
+    for(int i = 0; i < canvasWidth; i++) {
+        for(int j = 0; j < canvasHeight; j++) {
+            canvasPixels[( j*canvasWidth + i)*4 + 0] = 0;
+            canvasPixels[( j*canvasWidth + i)*4 + 1] = 0;
+            canvasPixels[( j*canvasWidth + i)*4 + 2] = 0;
+            canvasPixels[( j*canvasWidth + i)*4 + 3] = 0;
+            
+        }
+    }
+    
+    canvas.loadData(canvasPixels, canvasWidth, canvasHeight, GL_RGBA);
     
 }
 
@@ -57,6 +71,8 @@ void testApp::update(){
 	ofBackground(255,255,255);	
 	
 	grabber.update();
+    
+    if( grabber.isFrameNew()) {
     updateLocation();
 	
 	unsigned char * src = grabber.getPixels();
@@ -99,15 +115,21 @@ void testApp::update(){
     //Let's use RGB -> Luma, using Y = 0.375 R + 0.5 G + 0.125 B, we have a quick way out: Y = (R+R+B+G+G+G)/6
     //Is this still relevant for OF and iPhone?
     _averageBrightness = ((imageRedMean*2)+imageBlueMean+(imageGreenMean*3))/6;
-
+    
+    // Draw brightness histogram
+    drawBrightnessHistogram(_averageBrightness, width, height, marginWidth);
+        
+    }
 }
 
 //--------------------------------------------------------------
 void testApp::draw(){	
 	
 	ofSetColor(255);
-	grabber.draw(0, 0);
-	    
+	grabber.draw(0, 0, width, height);
+    canvas.draw(0, height - canvasHeight, canvasWidth, canvasHeight);
+
+	   
     //JAVA
     // Draw Location
     _drawLocationText(longitude, latitude, marginWidth);
@@ -116,8 +138,7 @@ void testApp::draw(){
     _drawBrightnessText(_averageBrightness, marginWidth);
     
     
-    // Draw brightness histogram
-    drawBrightnessHistogram(_averageBrightness, width, height, marginWidth);
+
 }
 
 
@@ -133,17 +154,22 @@ draw on top
 //--------------------------------------------------------------
 void testApp::drawBrightnessHistogram(double averageBrightness, int width, int height, int marginWidth) {
 
-        //ofSetColor(255, (int)brightnessHistory[bin], (int)brightnessHistory[bin], (int)brightnessHistory[bin]);
-        ofSetColor((int)averageBrightness);
-        ofRect(updateCounter%width, height - 100, 2, 100);
-        updateCounter++;
+    //draw average brightness into canvas
+    for(int i = 0; i < canvasHeight; i++) {
+        
+        canvasPixels[( i*canvasWidth + draw_position_x)*4 + 0] = averageBrightness;
+        canvasPixels[( i*canvasWidth + draw_position_x)*4 + 1] = averageBrightness;
+        canvasPixels[( i*canvasWidth + draw_position_x)*4 + 2] = averageBrightness;
+        canvasPixels[( i*canvasWidth + draw_position_x)*4 + 3] = 255;
+        
+    }
     
-    ofPixels pix = canvas.getPixels();
-    // FBO with transparency, default is to fill pixels with alpha
-    for (int y = 0; y < height; y++ ) {
-        for (int x = 0; x < width; x++) {
-            
-        }
+    canvas.loadData(canvasPixels, canvasWidth, canvasHeight, GL_RGBA);
+    
+    draw_position_x++;
+    
+    if(draw_position_x > canvasWidth) {
+        draw_position_x = 0;
     }
     
 }

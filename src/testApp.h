@@ -74,7 +74,11 @@ class testApp : public ofxiPhoneApp{
     int updateCounter = 0;
     
     ofTexture canvas;
-    
+    int canvasWidth;
+    int canvasHeight;
+    unsigned char * canvasPixels;
+    int draw_position_x = 0;
+
     
         int requestUpdateCap = 64;
     
