@@ -29,7 +29,7 @@ class testApp : public ofxiPhoneApp{
     
     // JAVA DARKNESS MAP TRANSLATION
         void calculateIntensityHistogram(int* rgb, int* histogram, int width, int height, int component);
-        void drawBrightnessHistogram(int newImageWidth, int canvasHeight, int marginWidth);
+        void drawBrightnessHistogram(double averageBrightness, int newImageWidth, int canvasHeight, int marginWidth);
         void _drawBrightnessText(double averageBrightness, int marginWidth);
         void _drawLocationText(double longitude, double latitude, int marginWidth);
         void sendPayload();
@@ -52,8 +52,9 @@ class testApp : public ofxiPhoneApp{
 
     
 		ofVideoGrabber grabber;
-		ofTexture tex;
 		unsigned char * pix;
+    
+    void calculatePixelAvg();
     
         int* rgbData;
         int* redHistogram;
@@ -64,9 +65,16 @@ class testApp : public ofxiPhoneApp{
         int width;
         int height;
         int marginWidth;
-        double* brightnessHistory = new double[256];
+    int screenWidth;
+    int screenHeight;
+    int histogramWidth;
+        double* brightnessHistory;
         int brightnessCounter = 0;
         double _averageBrightness;
+    int updateCounter = 0;
+    
+    ofTexture canvas;
+    
     
         int requestUpdateCap = 64;
     

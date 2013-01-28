@@ -35,12 +35,21 @@ void testApp::setup(){
     
     //VidGrabber setup
 	grabber.initGrabber(480, 360, OF_PIXELS_BGRA);
-	tex.allocate(grabber.getWidth(), grabber.getHeight(), GL_RGB);
     
-    width = grabber.getWidth();
-    height = grabber.getHeight();
+    //width = grabber.getWidth();
+    //height = grabber.getHeight();
+    
+    width = ofGetWidth();
+    height = ofGetHeight();
+    
+    
+    histogramWidth = width;
 	
+    brightnessHistory = new double[histogramWidth];
 	pix = new unsigned char[ (int)( width * height * 3.0) ];
+    
+    canvas.allocate(width, 100, GL_RGBA);
+    
 }
 
 //--------------------------------------------------------------
@@ -55,13 +64,13 @@ void testApp::update(){
 	
     //VideoGrabberExample Code
    
-    //Find amount of Red, Green and Blue pixel values
+    //1. Find amount of Red, Green and Blue pixel values
     long double redVals = 0.0;
     long double blueVals = 0.0;
     long double greenVals = 0.0;
     
 	for(int k = 0; k < totalPix; k+= 3){
-		
+
         // redValues
         redVals += src[k];
         
@@ -73,7 +82,7 @@ void testApp::update(){
 	}
     
 
-    //Calculate Mean
+    //2. Calculate Mean
     double imageRedMean 	= 0, imageGreenMean    = 0, imageBlueMean    = 0;
     
     int pixPerFrame = width*height;
@@ -81,37 +90,8 @@ void testApp::update(){
     imageRedMean = redVals/pixPerFrame;
     imageGreenMean = greenVals/pixPerFrame;
     imageBlueMean = blueVals/pixPerFrame;
-
     
-    //JAVA CODE
-    
-    // Calculate histogram
-    //calculateIntensityHistogram(rgbData, redHistogram,  width, height, 0);
-    //calculateIntensityHistogram(rgbData, greenHistogram,width, height, 1);
-    //calculateIntensityHistogram(rgbData, blueHistogram, width, height, 2);
-    
-    // Calculate mean
-    //double imageRedMean 	= 0, imageGreenMean    = 0, imageBlueMean    = 0;
-    //double redHistogramSum  = 0, greenHistogramSum = 0, blueHistogramSum = 0;
-    /*
-    for (int bin = 0; bin < 256; bin++)
-    {
-        imageRedMean      += redHistogram[bin] * bin;
-        redHistogramSum   += redHistogram[bin];
-        
-        imageGreenMean 	  += greenHistogram[bin] * bin;
-        greenHistogramSum += greenHistogram[bin];
-        
-        imageBlueMean 	  += blueHistogram[bin] * bin;
-        blueHistogramSum  += blueHistogram[bin];
-    } // bin
-    
-    imageRedMean   /= redHistogramSum;
-    imageGreenMean /= greenHistogramSum;
-    imageBlueMean  /= blueHistogramSum;
-     */
-    
-    //Calculate averageBrightness -- How to do this the best way?
+    //3. Calculate averageBrightness -- How to do this the best way?
     _averageBrightness = 0;
     
     //_averageBrightness = (imageRedMean + imageGreenMean + imageBlueMean) / 3;
@@ -119,10 +99,7 @@ void testApp::update(){
     //Let's use RGB -> Luma, using Y = 0.375 R + 0.5 G + 0.125 B, we have a quick way out: Y = (R+R+B+G+G+G)/6
     //Is this still relevant for OF and iPhone?
     _averageBrightness = ((imageRedMean*2)+imageBlueMean+(imageGreenMean*3))/6;
-    
-    brightnessHistory[brightnessCounter%256] = _averageBrightness; // why do a modulo of 256?
-    brightnessCounter++;
-     
+
 }
 
 //--------------------------------------------------------------
@@ -138,59 +115,37 @@ void testApp::draw(){
     // Draw Time and AverageBrightness Value
     _drawBrightnessText(_averageBrightness, marginWidth);
     
+    
     // Draw brightness histogram
-    drawBrightnessHistogram(width, height, marginWidth);
+    drawBrightnessHistogram(_averageBrightness, width, height, marginWidth);
 }
 
-//--------------------------------------------------------------
-void testApp::calculateIntensityHistogram(int* rgb, int* histogram, int width, int height, int component){
-    
-    for (int bin = 0; bin < 256; bin++) { // for Android the bin value is 256, what is it for iPhone?
-        histogram[bin] = 0;
-    } //bin
-    
-    if(component == 0) // red
-    {
-        for(int pix = 0; pix < width*height; pix += 3)
-        {
-            int pixVal = (rgb[pix] >> 16) & 0xff;
-            histogram[ pixVal ]++;
-        } // pix
-    }
-    else if (component == 1) // green
-    {
-        for (int pix = 0; pix < width*height; pix += 3)
-        {
-            int pixVal = (rgb[pix] >> 8) & 0xff;
-            histogram[ pixVal ] ++;
-        } // pix
-    }
-    else // blue
-    {
-        for(int pix = 0; pix < width*height; pix += 3)
-        {
-            int pixVal = rgb[pix] & 0xff;
-            histogram[ pixVal ]++;
-        } // pix
-    }
-    
-}
+
+//method
+/*
+check current position, previous pos + 1;
+tint with brightness
+do it while less than width of screen
+if bigger than width of screen
+draw on top
+*/
 
 //--------------------------------------------------------------
-void testApp::drawBrightnessHistogram(int width, int height, int marginWidth) {
-    float barWidth = ((float)width / 256);
-    // float barMarginHeight = 2;
+void testApp::drawBrightnessHistogram(double averageBrightness, int width, int height, int marginWidth) {
 
-    for (int bin = 0; bin < 256; bin++)
-    {
-        if (brightnessHistory[bin] != 0)
-        //if (_averageBrightness != 0)
-        {
-            //ofSetColor(255, (int)brightnessHistory[bin], (int)brightnessHistory[bin], (int)brightnessHistory[bin]);
-            ofSetColor((int)brightnessHistory[bin]);
-            ofRect(bin%width, height - 100, 2, 100);
+        //ofSetColor(255, (int)brightnessHistory[bin], (int)brightnessHistory[bin], (int)brightnessHistory[bin]);
+        ofSetColor((int)averageBrightness);
+        ofRect(updateCounter%width, height - 100, 2, 100);
+        updateCounter++;
+    
+    ofPixels pix = canvas.getPixels();
+    // FBO with transparency, default is to fill pixels with alpha
+    for (int y = 0; y < height; y++ ) {
+        for (int x = 0; x < width; x++) {
+            
         }
     }
+    
 }
 
 //--------------------------------------------------------------
