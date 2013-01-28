@@ -127,8 +127,10 @@ void testApp::draw(){
 	
 	ofSetColor(255);
 	grabber.draw(0, 0, width, height);
+    
+    ofEnableAlphaBlending();
     canvas.draw(0, height - canvasHeight, canvasWidth, canvasHeight);
-
+    ofDisableAlphaBlending();
 	   
     //JAVA
     // Draw Location
