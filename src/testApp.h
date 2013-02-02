@@ -31,7 +31,7 @@ class testApp : public ofxiPhoneApp{
         void calculateIntensityHistogram(int* rgb, int* histogram, int width, int height, int component);
         void drawBrightnessHistogram(double averageBrightness, int newImageWidth, int canvasHeight, int marginWidth);
         void _drawBrightnessText(double averageBrightness, int marginWidth);
-        void _drawLocationText(double longitude, double latitude, int marginWidth);
+        void _drawLocationText();
         void sendPayload();
         
         void _drawTimeStamp(int marginWidth);
@@ -64,7 +64,7 @@ class testApp : public ofxiPhoneApp{
     
         int width;
         int height;
-        int marginWidth;
+        int marginWidth = 0;
     int screenWidth;
     int screenHeight;
     int histogramWidth;
