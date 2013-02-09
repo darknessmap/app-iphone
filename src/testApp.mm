@@ -1,8 +1,5 @@
 #include "testApp.h"
 
-//good reference of other OF iPhone app that uses coreLocation:
-// https://github.com/trentbrooks/AntiMap/blob/master/AntiMapLog/Openframeworks-iPhone/AntiMapLog/src/AntiMapLog.mm
-
 
 //--------------------------------------------------------------
 void testApp::setup(){
@@ -13,7 +10,7 @@ void testApp::setup(){
 	ofSetFrameRate(30);
     
     // load font for displaying info
-	font.loadFont("verdana.ttf", 12, true, true);
+	font.loadFont("verdana.ttf", 14, true, true);
     font.setLineHeight(18.0f);
 	font.setLetterSpacing(1.027);
     
@@ -125,20 +122,19 @@ void testApp::update(){
 //--------------------------------------------------------------
 void testApp::draw(){	
 	
-	ofSetColor(255);
+	//ofSetColor(255);
 	grabber.draw(0, 0, width, height);
     
     ofEnableAlphaBlending();
     canvas.draw(0, height - canvasHeight, canvasWidth, canvasHeight);
     ofDisableAlphaBlending();
-	   
+    
     //JAVA
     // Draw Location
-    _drawLocationText(longitude, latitude, marginWidth);
+    _drawLocationText();
     
     // Draw Time and AverageBrightness Value
     _drawBrightnessText(_averageBrightness, marginWidth);
-    
     
 
 }
@@ -204,6 +200,7 @@ void testApp::_drawTimeStamp(int marginWidth) {
 
     //string TimeBrightness = "Time: "+ ofToString(ofGetTimestampString()) + " Brightness: " + ofToString(averageBrightness);
     string TimeBrightness = "Time: " + ofToString(getTimeStamp());
+    ofPushStyle();
     ofSetColor(0, 0, 0); // rgb value for black
     font.drawString(TimeBrightness, marginWidth + 10-1, 60-1);
     font.drawString(TimeBrightness, marginWidth + 10+1, 60-1);
@@ -211,6 +208,7 @@ void testApp::_drawTimeStamp(int marginWidth) {
     font.drawString(TimeBrightness, marginWidth + 10-1, 60+1);
     ofSetColor(255, 255, 0); // rgb value for yellow;
     font.drawString(TimeBrightness, marginWidth + 10,   60);
+    ofPopStyle();
 }
 
 
@@ -226,6 +224,7 @@ void testApp::_drawBrightnessText(double averageBrightness, int marginWidth) {
     // Translate from Java
     //string TimeBrightness = "Time: "+ ofToString(ofGetTimestampString()) + " Brightness: " + ofToString(averageBrightness);
     string TimeBrightness = "Time: " + ofToString(getTimeStamp()) + " Brightness: " + ofToString(averageBrightness);
+    ofPushStyle();
     ofSetColor(0, 0, 0); // rgb value for black
     font.drawString(TimeBrightness, marginWidth + 10-1, 60-1);
     font.drawString(TimeBrightness, marginWidth + 10+1, 60-1);
@@ -233,6 +232,7 @@ void testApp::_drawBrightnessText(double averageBrightness, int marginWidth) {
     font.drawString(TimeBrightness, marginWidth + 10-1, 60+1);
     ofSetColor(255, 255, 0); // rgb value for yellow;
     font.drawString(TimeBrightness, marginWidth + 10,   60);
+    ofPopStyle();
 }
 
 //--------------------------------------------------------------
@@ -243,17 +243,19 @@ void testApp::_drawBrightnessText(double averageBrightness, int marginWidth) {
  * @param latitude
  * @param marginWidth
  */
-void testApp::_drawLocationText(double longitude, double latitude, int marginWidth) {
+void testApp::_drawLocationText() {
     
     //Translate from Java
     string LocationValues = "Lat: " + latitudeStr + " Lon: " + longitudeStr;
-    ofSetColor(0, 0, 0); // rgb value for black
-    font.drawString(LocationValues, marginWidth + 10-1, 30-1);
-    font.drawString(LocationValues, marginWidth + 10+1, 30-1);
-    font.drawString(LocationValues, marginWidth + 10+1, 30+1);
-    font.drawString(LocationValues, marginWidth + 10-1, 30+1);
-    ofSetColor(255, 255, 0); // rgb value for yellow
-    font.drawString(LocationValues, marginWidth + 10,   30);
+        ofPushStyle();
+        ofSetColor(0, 0, 0); // rgb value for black
+        font.drawString(LocationValues, 0 + 10-1, 30-1);
+        font.drawString(LocationValues, 0 + 10+1, 30-1);
+        font.drawString(LocationValues, 0 + 10+1, 30+1);
+        font.drawString(LocationValues, 0 + 10-1, 30+1);
+        ofSetColor(255, 255, 0); // rgb value for yellow
+        font.drawString(LocationValues, 0 + 10,   30);
+        ofPopStyle();
 }
 
 //--------------------------------------------------------------
