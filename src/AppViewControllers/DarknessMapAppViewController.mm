@@ -3,10 +3,10 @@
 //  Created by lukasz karluk on 8/02/12.
 //
 
-#import "CircleAppViewController.h"
+#import "DarknessMapAppViewController.h"
 #import "ofxiPhoneExtras.h"
 
-@implementation CircleAppViewController
+@implementation DarknessMapAppViewController
 
 - (id) initWithFrame:(CGRect)frame app:(ofxiPhoneApp *)app {
 

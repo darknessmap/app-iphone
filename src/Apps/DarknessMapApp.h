@@ -4,12 +4,12 @@
 #include "ofxiPhone.h"
 #include "ofxiPhoneExtras.h"
 
-class CircleApp : public ofxiPhoneApp {
+class DarknessMapApp : public ofxiPhoneApp {
 	
 public:
     
-     CircleApp ();
-    ~CircleApp ();
+    DarknessMapApp ();
+    ~DarknessMapApp ();
     
 	// DEFAULTS
     void setup();

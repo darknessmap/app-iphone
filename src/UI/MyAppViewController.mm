@@ -8,8 +8,8 @@
 #import "SquareAppViewController.h"
 #import "SquareApp.h"
 
-#import "CircleAppViewController.h"
-#import "CircleApp.h"
+#import "DarknessMapAppViewController.h"
+#import "DarknessMapApp.h"
 
 #import "TriangleAppViewController.h"
 #import "TriangleApp.h"
@@ -65,7 +65,7 @@
     [self.view addSubview:containerView];
 
     NSArray *buttonTitles;
-    buttonTitles = [NSArray arrayWithObjects: @"square", @"circle", @"triangle", @"image", nil];
+    buttonTitles = [NSArray arrayWithObjects: @"square", @"launch app", @"view map", @"image", nil];
     
     NSInteger buttonY = 44;     // make room for navigation bar.
     NSInteger buttonGap = 2;
@@ -105,12 +105,12 @@
 }
 
 - (void)button2Pressed:(id)sender {
-    CircleAppViewController *viewController;
-    viewController = [[[CircleAppViewController alloc] initWithFrame:[[UIScreen mainScreen] bounds]
-                                                                 app:new CircleApp()] autorelease];
+    DarknessMapAppViewController *viewController;
+    viewController = [[[DarknessMapAppViewController alloc] initWithFrame:[[UIScreen mainScreen] bounds]
+                                                                 app:new DarknessMapApp()] autorelease];
     
     [self.navigationController pushViewController:viewController animated:YES];
-    self.navigationController.navigationBar.topItem.title = @"CircleApp";
+    self.navigationController.navigationBar.topItem.title = @"Darkness Map";
 }
 
 - (void)button3Pressed:(id)sender {

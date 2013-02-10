@@ -1,24 +1,24 @@
-#include "CircleApp.h"
+#include "DarknessMapApp.h"
 
 //--------------------------------------------------------------
-CircleApp :: CircleApp () {
-    cout << "creating CircleApp" << endl;
+DarknessMapApp :: DarknessMapApp() {
+    cout << "creating DarknessMapApp" << endl;
     
 }
 
 //--------------------------------------------------------------
-CircleApp :: ~CircleApp () {
-    cout << "destroying CircleApp" << endl;
+DarknessMapApp :: ~DarknessMapApp() {
+    cout << "destroying DarknessMapApp" << endl;
 }
 
 //--------------------------------------------------------------
-void CircleApp::setup() {
+void DarknessMapApp::setup() {
 	ofSetLogLevel(OF_LOG_VERBOSE);
     
 	ofSetFrameRate(30);
     
     // load font for displaying info
-	font.loadFont("fonts/mono0755.ttf", 12, true, true);
+	font.loadFont("fonts/mono0755.ttf", 10, true, true);
     font.setLineHeight(18.0f);
 	font.setLetterSpacing(1.027);
     
@@ -28,9 +28,6 @@ void CircleApp::setup() {
     longitude = 0.0;
     latitudeStr = "0.000000";
     longitudeStr = "0.000000";
-    
-   
-    
     
     // setup sensors
     ofRegisterTouchEvents(this);
@@ -75,7 +72,7 @@ void CircleApp::setup() {
 }
 
 //--------------------------------------------------------------
-void CircleApp::update(){
+void DarknessMapApp::update(){
 	ofBackground(255,255,255);
 	
 	grabber.update();
@@ -131,7 +128,7 @@ void CircleApp::update(){
 }
 
 //--------------------------------------------------------------
-void CircleApp::draw(){
+void DarknessMapApp::draw(){
 	
 	//ofSetColor(255);
 	grabber.draw(0, 0, width, height);
@@ -162,7 +159,7 @@ void CircleApp::draw(){
  */
 
 //--------------------------------------------------------------
-void CircleApp::drawBrightnessHistogram(double averageBrightness, int width, int height, int marginWidth) {
+void DarknessMapApp::drawBrightnessHistogram(double averageBrightness, int width, int height, int marginWidth) {
     
     //draw average brightness into canvas
     for(int i = 0; i < canvasHeight; i++) {
@@ -186,7 +183,7 @@ void CircleApp::drawBrightnessHistogram(double averageBrightness, int width, int
 
 //--------------------------------------------------------------
 // timestamp help
-string CircleApp::getTimeStamp()
+string DarknessMapApp::getTimeStamp()
 {
     string theYear = ofToString(ofGetYear()).substr(2); // just get the last 2 digits of the year (2011 > 11)
     return pad(ofGetMonth()) + "-" + pad(ofGetDay()) + "-" +  theYear + " " + pad(ofGetHours()) + ":" + pad(ofGetMinutes()) + ":" + pad(ofGetSeconds());
@@ -194,7 +191,7 @@ string CircleApp::getTimeStamp()
 
 //--------------------------------------------------------------
 // adds a leading zero
-string CircleApp::pad(int value)
+string DarknessMapApp::pad(int value)
 {
     if(value < 10) return "0" + ofToString(value);
     
@@ -209,7 +206,7 @@ string CircleApp::pad(int value)
  * @param latitude
  * @param marginWidth
  */
-void CircleApp::_drawLocationText() {
+void DarknessMapApp::_drawLocationText() {
     
     //Translate from Java
     string LocationValues = "Lat: " + latitudeStr + " Lon: " + longitudeStr;
@@ -231,7 +228,7 @@ void CircleApp::_drawLocationText() {
  * @param averageBrightness
  * @param marginWidth
  */
-void CircleApp::_drawTimeStamp(int marginWidth) {
+void DarknessMapApp::_drawTimeStamp(int marginWidth) {
     
     //string TimeBrightness = "Time: "+ ofToString(ofGetTimestampString()) + " Brightness: " + ofToString(averageBrightness);
     string Time = "Time: " + ofToString(getTimeStamp());
@@ -254,7 +251,7 @@ void CircleApp::_drawTimeStamp(int marginWidth) {
  * @param averageBrightness
  * @param marginWidth
  */
-void CircleApp::_drawBrightnessText(double averageBrightness, int marginWidth) {
+void DarknessMapApp::_drawBrightnessText(double averageBrightness, int marginWidth) {
     
     // Translate from Java
     string Brightness = "Brightness: " + ofToString(averageBrightness);
@@ -277,7 +274,7 @@ void CircleApp::_drawBrightnessText(double averageBrightness, int marginWidth) {
  * It should happen every time the location changes. Also, we can
  * request updates periodically (i.e every x frames.)
  */
-void CircleApp::sendPayload() {
+void DarknessMapApp::sendPayload() {
     printf("Sending payload");
     
     //TODO: We need to include frame brightness avg as payload.
@@ -292,7 +289,7 @@ void CircleApp::sendPayload() {
  * Initialize payload object. Set unique app/device id and
  * the sessions id.
  */
-void CircleApp::_createPayload()
+void DarknessMapApp::_createPayload()
 {
     //_geoVO = new GeoPayloadVO();
     //String sid = Session.id();
@@ -303,7 +300,7 @@ void CircleApp::_createPayload()
 
 //--------------------------------------------------------------
 
-void CircleApp::_createGateway() {
+void DarknessMapApp::_createGateway() {
     
     //String api = _config.getProperty("API");
     //_gateway = new Gateway();
@@ -314,7 +311,7 @@ void CircleApp::_createGateway() {
 
 //--------------------------------------------------------------
 //Gets GPS data
-void CircleApp::updateLocation() {
+void DarknessMapApp::updateLocation() {
     if (hasGPS) {
         latitude = coreLocation->getLatitude();
         longitude = coreLocation->getLongitude();
@@ -324,7 +321,7 @@ void CircleApp::updateLocation() {
 }
 
 //--------------------------------------------------------------
-void CircleApp::exit(){
+void DarknessMapApp::exit(){
     
     grabber.close();
     coreLocation->stopHeading();
@@ -335,46 +332,46 @@ void CircleApp::exit(){
 }
 
 //--------------------------------------------------------------
-void CircleApp::touchDown(ofTouchEventArgs & touch){
+void DarknessMapApp::touchDown(ofTouchEventArgs & touch){
         
 }
 
 //--------------------------------------------------------------
-void CircleApp::touchMoved(ofTouchEventArgs & touch){
+void DarknessMapApp::touchMoved(ofTouchEventArgs & touch){
     
 }
 
 //--------------------------------------------------------------
-void CircleApp::touchUp(ofTouchEventArgs & touch){
+void DarknessMapApp::touchUp(ofTouchEventArgs & touch){
   
 }
 
 //--------------------------------------------------------------
-void CircleApp::touchDoubleTap(ofTouchEventArgs & touch){
+void DarknessMapApp::touchDoubleTap(ofTouchEventArgs & touch){
 }
 
 //--------------------------------------------------------------
-void CircleApp::touchCancelled(ofTouchEventArgs & touch){
+void DarknessMapApp::touchCancelled(ofTouchEventArgs & touch){
     
 }
 
 //--------------------------------------------------------------
-void CircleApp::lostFocus(){
+void DarknessMapApp::lostFocus(){
     
 }
 
 //--------------------------------------------------------------
-void CircleApp::gotFocus(){
+void DarknessMapApp::gotFocus(){
     
 }
 
 //--------------------------------------------------------------
-void CircleApp::gotMemoryWarning(){
+void DarknessMapApp::gotMemoryWarning(){
     
 }
 
 //--------------------------------------------------------------
-void CircleApp::deviceOrientationChanged(int newOrientation){
+void DarknessMapApp::deviceOrientationChanged(int newOrientation){
     
 }
 
