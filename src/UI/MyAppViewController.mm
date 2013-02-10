@@ -69,7 +69,8 @@
     
     NSInteger buttonY = 44;     // make room for navigation bar.
     NSInteger buttonGap = 2;
-    NSInteger buttonHeight = (screenRect.size.height - 44) / [buttonTitles count] - buttonGap * ([buttonTitles count] - 1);
+    //NSInteger buttonHeight = (screenRect.size.height - 44) / [buttonTitles count] - buttonGap * ([buttonTitles count] - 1);
+    NSInteger buttonHeight = 60;
     CGRect buttonRect = CGRectMake(0, 0, screenRect.size.width, buttonHeight);
     
     for (int i = 0; i < [buttonTitles count]; i++) {
