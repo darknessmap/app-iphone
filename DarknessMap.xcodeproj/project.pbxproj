@@ -16,6 +16,12 @@
 		5C5C47E116B85115009E7E80 /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = 5C5C47DD16B85115009E7E80 /* Default.png */; };
 		5C5C47E216B85115009E7E80 /* Icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 5C5C47DE16B85115009E7E80 /* Icon.png */; };
 		5C5C47E316B85115009E7E80 /* verdana.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 5C5C47DF16B85115009E7E80 /* verdana.ttf */; };
+		5C796D3F16C71C5A00535ECD /* ofxApp.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5C796D0D16C71C5A00535ECD /* ofxApp.cpp */; };
+		5C796D4016C71C5A00535ECD /* ofxParticle.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5C796D1116C71C5A00535ECD /* ofxParticle.cpp */; };
+		5C796D4116C71C5A00535ECD /* ofxQuadWarper.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5C796D1416C71C5A00535ECD /* ofxQuadWarper.cpp */; };
+		5C796D4216C71C5A00535ECD /* ofxScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5C796D1616C71C5A00535ECD /* ofxScene.cpp */; };
+		5C796D4316C71C5A00535ECD /* ofxSceneManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5C796D1816C71C5A00535ECD /* ofxSceneManager.cpp */; };
+		5C796D4416C71C5A00535ECD /* ofxTransformer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5C796D1B16C71C5A00535ECD /* ofxTransformer.cpp */; };
 		BB16EBD20F2B2A9500518274 /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BB16EBD10F2B2A9500518274 /* OpenGLES.framework */; };
 		BB16EBD90F2B2AB500518274 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BB16EBD80F2B2AB500518274 /* QuartzCore.framework */; };
 		BBE5EAB80F49AD8400F28951 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BBE5EAB70F49AD8400F28951 /* AudioToolbox.framework */; };
@@ -57,7 +63,25 @@
 		5C5C47DD16B85115009E7E80 /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
 		5C5C47DE16B85115009E7E80 /* Icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Icon.png; sourceTree = "<group>"; };
 		5C5C47DF16B85115009E7E80 /* verdana.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = verdana.ttf; sourceTree = "<group>"; };
-		5CA6543516BCC60F0028A746 /* testApp.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = testApp.h; sourceTree = "<group>"; };
+		5C796D0C16C71C5A00535ECD /* matrix_funcs.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = matrix_funcs.h; sourceTree = "<group>"; };
+		5C796D0D16C71C5A00535ECD /* ofxApp.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ofxApp.cpp; sourceTree = "<group>"; };
+		5C796D0E16C71C5A00535ECD /* ofxApp.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxApp.h; sourceTree = "<group>"; };
+		5C796D0F16C71C5A00535ECD /* ofxAppUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxAppUtils.h; sourceTree = "<group>"; };
+		5C796D1016C71C5A00535ECD /* ofxBitmapString.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxBitmapString.h; sourceTree = "<group>"; };
+		5C796D1116C71C5A00535ECD /* ofxParticle.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ofxParticle.cpp; sourceTree = "<group>"; };
+		5C796D1216C71C5A00535ECD /* ofxParticle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxParticle.h; sourceTree = "<group>"; };
+		5C796D1316C71C5A00535ECD /* ofxParticleManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxParticleManager.h; sourceTree = "<group>"; };
+		5C796D1416C71C5A00535ECD /* ofxQuadWarper.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ofxQuadWarper.cpp; sourceTree = "<group>"; };
+		5C796D1516C71C5A00535ECD /* ofxQuadWarper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxQuadWarper.h; sourceTree = "<group>"; };
+		5C796D1616C71C5A00535ECD /* ofxScene.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ofxScene.cpp; sourceTree = "<group>"; };
+		5C796D1716C71C5A00535ECD /* ofxScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxScene.h; sourceTree = "<group>"; };
+		5C796D1816C71C5A00535ECD /* ofxSceneManager.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ofxSceneManager.cpp; sourceTree = "<group>"; };
+		5C796D1916C71C5A00535ECD /* ofxSceneManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxSceneManager.h; sourceTree = "<group>"; };
+		5C796D1A16C71C5A00535ECD /* ofxTimer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxTimer.h; sourceTree = "<group>"; };
+		5C796D1B16C71C5A00535ECD /* ofxTransformer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ofxTransformer.cpp; sourceTree = "<group>"; };
+		5C796D1C16C71C5A00535ECD /* ofxTransformer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxTransformer.h; sourceTree = "<group>"; };
+		5C796D4C16C71F2900535ECD /* TextScene.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TextScene.h; sourceTree = "<group>"; };
+		5C796D4D16C71FF600535ECD /* Button.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Button.h; sourceTree = "<group>"; };
 		BB16EBD10F2B2A9500518274 /* OpenGLES.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGLES.framework; path = System/Library/Frameworks/OpenGLES.framework; sourceTree = SDKROOT; };
 		BB16EBD80F2B2AB500518274 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		BB24DDC910DA781C00E9C588 /* ofxiphone-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "ofxiphone-Info.plist"; sourceTree = "<group>"; };
@@ -151,6 +175,39 @@
 			path = bin/data;
 			sourceTree = SOURCE_ROOT;
 		};
+		5C796CD616C71C5A00535ECD /* ofxAppUtils */ = {
+			isa = PBXGroup;
+			children = (
+				5C796D0B16C71C5A00535ECD /* src */,
+			);
+			name = ofxAppUtils;
+			path = ../../../addons/ofxAppUtils;
+			sourceTree = "<group>";
+		};
+		5C796D0B16C71C5A00535ECD /* src */ = {
+			isa = PBXGroup;
+			children = (
+				5C796D0C16C71C5A00535ECD /* matrix_funcs.h */,
+				5C796D0D16C71C5A00535ECD /* ofxApp.cpp */,
+				5C796D0E16C71C5A00535ECD /* ofxApp.h */,
+				5C796D0F16C71C5A00535ECD /* ofxAppUtils.h */,
+				5C796D1016C71C5A00535ECD /* ofxBitmapString.h */,
+				5C796D1116C71C5A00535ECD /* ofxParticle.cpp */,
+				5C796D1216C71C5A00535ECD /* ofxParticle.h */,
+				5C796D1316C71C5A00535ECD /* ofxParticleManager.h */,
+				5C796D1416C71C5A00535ECD /* ofxQuadWarper.cpp */,
+				5C796D1516C71C5A00535ECD /* ofxQuadWarper.h */,
+				5C796D1616C71C5A00535ECD /* ofxScene.cpp */,
+				5C796D1716C71C5A00535ECD /* ofxScene.h */,
+				5C796D1816C71C5A00535ECD /* ofxSceneManager.cpp */,
+				5C796D1916C71C5A00535ECD /* ofxSceneManager.h */,
+				5C796D1A16C71C5A00535ECD /* ofxTimer.h */,
+				5C796D1B16C71C5A00535ECD /* ofxTransformer.cpp */,
+				5C796D1C16C71C5A00535ECD /* ofxTransformer.h */,
+			);
+			path = src;
+			sourceTree = "<group>";
+		};
 		BB16E9930F2B1E5900518274 /* libs */ = {
 			isa = PBXGroup;
 			children = (
@@ -162,6 +219,7 @@
 		BB16F26B0F2B646B00518274 /* addons */ = {
 			isa = PBXGroup;
 			children = (
+				5C796CD616C71C5A00535ECD /* ofxAppUtils */,
 			);
 			name = addons;
 			sourceTree = "<group>";
@@ -197,8 +255,10 @@
 		E4D8936A11527B74007E1F53 /* src */ = {
 			isa = PBXGroup;
 			children = (
+				E4D8936C11527B74007E1F53 /* testApp.h */,
+				5C796D4C16C71F2900535ECD /* TextScene.h */,
 				E4D8936B11527B74007E1F53 /* main.mm */,
-				5CA6543516BCC60F0028A746 /* testApp.h */,
+				5C796D4D16C71FF600535ECD /* Button.h */,
 				E4D8936D11527B74007E1F53 /* testApp.mm */,
 				5C5C47DB16B85115009E7E80 /* data */,
 				E4D8936C11527B74007E1F53 /* testApp.h */,
@@ -308,6 +368,12 @@
 			files = (
 				E4D8936E11527B74007E1F53 /* main.mm in Sources */,
 				E4D8936F11527B74007E1F53 /* testApp.mm in Sources */,
+				5C796D3F16C71C5A00535ECD /* ofxApp.cpp in Sources */,
+				5C796D4016C71C5A00535ECD /* ofxParticle.cpp in Sources */,
+				5C796D4116C71C5A00535ECD /* ofxQuadWarper.cpp in Sources */,
+				5C796D4216C71C5A00535ECD /* ofxScene.cpp in Sources */,
+				5C796D4316C71C5A00535ECD /* ofxSceneManager.cpp in Sources */,
+				5C796D4416C71C5A00535ECD /* ofxTransformer.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

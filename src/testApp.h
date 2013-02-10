@@ -106,4 +106,11 @@ class testApp : public ofxiPhoneApp{
 	 * Unit meters.
 	 */
 	 int minDistance = 14;
+    
+    //ofxAppUtils stuff
+    // handles the scenes
+    ofxSceneManager sceneManager;
+    
+    // simple scene change gui
+    Button prevButton, nextButton;
 };
