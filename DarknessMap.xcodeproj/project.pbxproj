@@ -82,6 +82,7 @@
 		5C796D1C16C71C5A00535ECD /* ofxTransformer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxTransformer.h; sourceTree = "<group>"; };
 		5C796D4C16C71F2900535ECD /* TextScene.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TextScene.h; sourceTree = "<group>"; };
 		5C796D4D16C71FF600535ECD /* Button.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Button.h; sourceTree = "<group>"; };
+		5C796E1316C727A800535ECD /* testApp.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = testApp.h; sourceTree = "<group>"; };
 		BB16EBD10F2B2A9500518274 /* OpenGLES.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGLES.framework; path = System/Library/Frameworks/OpenGLES.framework; sourceTree = SDKROOT; };
 		BB16EBD80F2B2AB500518274 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		BB24DDC910DA781C00E9C588 /* ofxiphone-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "ofxiphone-Info.plist"; sourceTree = "<group>"; };
@@ -95,7 +96,6 @@
 		E41D40FD13B3A0D800A75A5D /* iOS+OFLib.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = "iOS+OFLib.xcodeproj"; path = "../../../libs/openFrameworksCompiled/project/ios/iOS+OFLib.xcodeproj"; sourceTree = SOURCE_ROOT; };
 		E4A823A312561BE3002F86A2 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
 		E4D8936B11527B74007E1F53 /* main.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = main.mm; path = src/main.mm; sourceTree = SOURCE_ROOT; };
-		E4D8936C11527B74007E1F53 /* testApp.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = testApp.h; path = src/testApp.h; sourceTree = SOURCE_ROOT; };
 		E4D8936D11527B74007E1F53 /* testApp.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = testApp.mm; path = src/testApp.mm; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
@@ -255,13 +255,12 @@
 		E4D8936A11527B74007E1F53 /* src */ = {
 			isa = PBXGroup;
 			children = (
-				E4D8936C11527B74007E1F53 /* testApp.h */,
+				5C796E1316C727A800535ECD /* testApp.h */,
 				5C796D4C16C71F2900535ECD /* TextScene.h */,
-				E4D8936B11527B74007E1F53 /* main.mm */,
 				5C796D4D16C71FF600535ECD /* Button.h */,
+				E4D8936B11527B74007E1F53 /* main.mm */,
 				E4D8936D11527B74007E1F53 /* testApp.mm */,
 				5C5C47DB16B85115009E7E80 /* data */,
-				E4D8936C11527B74007E1F53 /* testApp.h */,
 			);
 			path = src;
 			sourceTree = SOURCE_ROOT;
@@ -435,6 +434,8 @@
 					src,
 				);
 				IPHONEOS_DEPLOYMENT_TARGET = 3.1;
+				OFX_APP_UTILS_DEFINES = "OFX_APP_UTILS_NO_CONTROL_PANEL OFX_APP_UTILS_NO_XML";
+				OF_ADDONS_DEFINES = "OFX_APP_UTILS_NO_CONTROL_PANEL OFX_APP_UTILS_NO_XML";
 				ONLY_ACTIVE_ARCH = NO;
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
 				SDKROOT = iphoneos;
@@ -465,6 +466,8 @@
 					src,
 				);
 				IPHONEOS_DEPLOYMENT_TARGET = 3.1;
+				OFX_APP_UTILS_DEFINES = "OFX_APP_UTILS_NO_CONTROL_PANEL OFX_APP_UTILS_NO_XML";
+				OF_ADDONS_DEFINES = "OFX_APP_UTILS_NO_CONTROL_PANEL OFX_APP_UTILS_NO_XML";
 				ONLY_ACTIVE_ARCH = NO;
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = 1;

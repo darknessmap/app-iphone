@@ -5,7 +5,10 @@
 #include "ofxiPhoneExtras.h"
 #include "ofxiPhoneCoreLocation.h"
 
-class testApp : public ofxiPhoneApp{
+#include "ofxAppUtils.h"
+#include "Button.h"
+
+class testApp : public ofxApp{
 	
 	public:
     

@@ -20,6 +20,29 @@ void testApp::setup(){
     longitude = 0.0;
     latitudeStr = "0.000000";
     longitudeStr = "0.000000";
+    
+    //load scenes
+    sceneManager.add(new TextScene(*this, "Scene One", "1"));
+    sceneManager.add(new TextScene(*this, "Scene Two", "2"));
+    sceneManager.setup();
+    ofSetLogLevel("ofxSceneManager", OF_LOG_VERBOSE); // log to console
+    // start with a specific scene
+	// set now to true in order to ignore the scene fade and change now
+	sceneManager.gotoScene(0, true);
+    // attach scene manager to this ofxApp so it's called automatically,
+	// you can also call the callbacks (update, draw, keyPressed, etc) manually
+    // if you don't set it
+	//
+	// you can also turn off the auto sceneManager update and draw calls with:
+	// setSceneManagerUpdate(false);
+	// setSceneManagerDraw(false);
+	//
+	// the input callbacks in your scenes will be called if they are implemented
+	//
+	setSceneManager(&sceneManager);
+    nextButton.setType(Button::RIGHT);
+    nextButton.set(ofGetWidth()-51, ofGetHeight()-51, 50, 50);
+
 
     // setup sensors
     ofRegisterTouchEvents(this);
@@ -135,6 +158,33 @@ void testApp::draw(){
     
     // Draw Time and AverageBrightness Value
     _drawBrightnessText(_averageBrightness, marginWidth);
+    
+    // show the render area edges with a white rect
+	ofNoFill();
+	ofSetColor(127);
+	ofSetRectMode(OF_RECTMODE_CORNER);
+	ofRect(1, 1, getRenderWidth()-2, getRenderHeight()-2);
+	ofFill();
+	
+	// drop out of the auto transform space back to OF screen space
+	popTransforms();
+	
+	// draw the buttons
+	prevButton.draw();
+	nextButton.draw();
+	
+	// draw current scene info using the ofxBitmapString stream interface
+	// to ofDrawBitmapString
+	ofSetColor(200);
+	ofxBitmapString(10, 22)
+    << "Current Scene: #" << sceneManager.getCurrentSceneIndex()
+    << " " << sceneManager.getCurrentSceneName();
+	
+	// go back to the auto transform space
+	//
+	// this is actually done automatically if the transforms were popped
+	// before the control panel is drawn, but included here for completeness
+	pushTransforms();
     
 
 }
@@ -317,22 +367,27 @@ void testApp::exit(){
 
 //--------------------------------------------------------------
 void testApp::touchDown(ofTouchEventArgs & touch){
+    nextButton.inside(touch.x, touch.y);
 
 }
 
 //--------------------------------------------------------------
 void testApp::touchMoved(ofTouchEventArgs & touch){
+    nextButton.inside(touch.x, touch.y);
 
 }
 
 //--------------------------------------------------------------
 void testApp::touchUp(ofTouchEventArgs & touch){
-
+    if(nextButton.isInside) {
+		sceneManager.nextScene();
+		nextButton.isInside = false;
+	}
 }
 
 //--------------------------------------------------------------
 void testApp::touchDoubleTap(ofTouchEventArgs & touch){
-
+    sceneManager.nextScene();
 }
 
 //--------------------------------------------------------------
