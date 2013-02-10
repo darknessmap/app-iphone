@@ -146,6 +146,7 @@ void CircleApp::draw(){
     
     // Draw Time and AverageBrightness Value
     _drawBrightnessText(_averageBrightness, marginWidth);
+    _drawTimeStamp(marginWidth);
     
     
 }
@@ -204,52 +205,6 @@ string CircleApp::pad(int value)
 /**
  *
  * @param canvas
- * @param averageBrightness
- * @param marginWidth
- */
-void CircleApp::_drawTimeStamp(int marginWidth) {
-    
-    //string TimeBrightness = "Time: "+ ofToString(ofGetTimestampString()) + " Brightness: " + ofToString(averageBrightness);
-    string TimeBrightness = "Time: " + ofToString(getTimeStamp());
-    ofPushStyle();
-    ofSetColor(0, 0, 0); // rgb value for black
-    font.drawString(TimeBrightness, marginWidth + 10-1, 60-1);
-    font.drawString(TimeBrightness, marginWidth + 10+1, 60-1);
-    font.drawString(TimeBrightness, marginWidth + 10+1, 60+1);
-    font.drawString(TimeBrightness, marginWidth + 10-1, 60+1);
-    ofSetColor(255, 255, 0); // rgb value for yellow;
-    font.drawString(TimeBrightness, marginWidth + 10,   60);
-    ofPopStyle();
-}
-
-
-//--------------------------------------------------------------
-/**
- *
- * @param canvas
- * @param averageBrightness
- * @param marginWidth
- */
-void CircleApp::_drawBrightnessText(double averageBrightness, int marginWidth) {
-    
-    // Translate from Java
-    //string TimeBrightness = "Time: "+ ofToString(ofGetTimestampString()) + " Brightness: " + ofToString(averageBrightness);
-    string TimeBrightness = "Time: " + ofToString(getTimeStamp()) + " Brightness: " + ofToString(averageBrightness);
-    ofPushStyle();
-    ofSetColor(0, 0, 0); // rgb value for black
-    font.drawString(TimeBrightness, marginWidth + 10-1, 60-1);
-    font.drawString(TimeBrightness, marginWidth + 10+1, 60-1);
-    font.drawString(TimeBrightness, marginWidth + 10+1, 60+1);
-    font.drawString(TimeBrightness, marginWidth + 10-1, 60+1);
-    ofSetColor(255, 255, 0); // rgb value for yellow;
-    font.drawString(TimeBrightness, marginWidth + 10,   60);
-    ofPopStyle();
-}
-
-//--------------------------------------------------------------
-/**
- *
- * @param canvas
  * @param longitude
  * @param latitude
  * @param marginWidth
@@ -268,6 +223,53 @@ void CircleApp::_drawLocationText() {
     font.drawString(LocationValues, 0 + 10,   30);
     ofPopStyle();
 }
+
+//--------------------------------------------------------------
+/**
+ *
+ * @param canvas
+ * @param averageBrightness
+ * @param marginWidth
+ */
+void CircleApp::_drawTimeStamp(int marginWidth) {
+    
+    //string TimeBrightness = "Time: "+ ofToString(ofGetTimestampString()) + " Brightness: " + ofToString(averageBrightness);
+    string Time = "Time: " + ofToString(getTimeStamp());
+    ofPushStyle();
+    ofSetColor(0, 0, 0); // rgb value for black
+    font.drawString(Time, marginWidth + 10-1, 60-1);
+    font.drawString(Time, marginWidth + 10+1, 60-1);
+    font.drawString(Time, marginWidth + 10+1, 60+1);
+    font.drawString(Time, marginWidth + 10-1, 60+1);
+    ofSetColor(255, 255, 0); // rgb value for yellow;
+    font.drawString(Time, marginWidth + 10,   60);
+    ofPopStyle();
+}
+
+
+//--------------------------------------------------------------
+/**
+ *
+ * @param canvas
+ * @param averageBrightness
+ * @param marginWidth
+ */
+void CircleApp::_drawBrightnessText(double averageBrightness, int marginWidth) {
+    
+    // Translate from Java
+    string Brightness = "Brightness: " + ofToString(averageBrightness);
+    ofPushStyle();
+    ofSetColor(0, 0, 0); // rgb value for black
+    font.drawString(Brightness, marginWidth + 10-1, 90-1);
+    font.drawString(Brightness, marginWidth + 10+1, 90-1);
+    font.drawString(Brightness, marginWidth + 10+1, 90+1);
+    font.drawString(Brightness, marginWidth + 10-1, 90+1);
+    ofSetColor(255, 255, 0); // rgb value for yellow;
+    font.drawString(Brightness, marginWidth + 10,   90);
+    ofPopStyle();
+}
+
+
 
 //--------------------------------------------------------------
 /**

@@ -34,9 +34,10 @@ public:
     void drawBrightnessHistogram(double averageBrightness, int newImageWidth, int canvasHeight, int marginWidth);
     void _drawBrightnessText(double averageBrightness, int marginWidth);
     void _drawLocationText();
+    void _drawTimeStamp(int marginWidth);
     void sendPayload();
     
-    void _drawTimeStamp(int marginWidth);
+
     
     void updateLocation();
     string getTimeStamp();
