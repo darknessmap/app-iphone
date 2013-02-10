@@ -7,26 +7,13 @@
          shouldBeEnabled = "No"
          ignoreCount = "0"
          continueAfterRunningActions = "No"
-         filePath = "src/testApp.h"
-         timestampString = "380057220.904242"
+         filePath = "src/Apps/CircleApp.mm"
+         timestampString = "382161486.263948"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "26"
-         endingLineNumber = "26"
-         landmarkName = "class testApp"
-         landmarkType = "3">
-      </FileBreakpoint>
-      <FileBreakpoint
-         shouldBeEnabled = "No"
-         ignoreCount = "0"
-         continueAfterRunningActions = "No"
-         filePath = "src/testApp.mm"
-         timestampString = "380954325.482549"
-         startingColumnNumber = "9223372036854775807"
-         endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "30"
-         endingLineNumber = "30"
-         landmarkName = "testApp::setup()"
+         startingLineNumber = "332"
+         endingLineNumber = "332"
+         landmarkName = "CircleApp::exit()"
          landmarkType = "5">
       </FileBreakpoint>
    </FileBreakpoints>
