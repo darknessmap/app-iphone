@@ -31,7 +31,7 @@ void DarknessMapApp::setup() {
     
     // setup sensors
     ofRegisterTouchEvents(this);
-    ofxiPhoneSetOrientation(OFXIPHONE_ORIENTATION_LANDSCAPE_RIGHT);
+    ofxiPhoneSetOrientation(OFXIPHONE_ORIENTATION_PORTRAIT);
     coreLocation = new ofxiPhoneCoreLocation();
     hasGPS = coreLocation->startLocation();
     //[UIApplication sharedApplication].idleTimerDisabled = YES;
@@ -48,7 +48,7 @@ void DarknessMapApp::setup() {
     width = ofGetWidth();
     height = ofGetHeight();
     canvasWidth = width;
-    canvasHeight = 50;
+    canvasHeight = 100;
     
     brightnessHistory = new double[histogramWidth];
 	pix = new unsigned char[ (int)( width * height * 3.0) ];
@@ -162,7 +162,7 @@ void DarknessMapApp::draw(){
 void DarknessMapApp::drawBrightnessHistogram(double averageBrightness, int width, int height, int marginWidth) {
     
     //draw average brightness into canvas
-    for(int i = 0; i < canvasHeight; i++) {
+    for(int i = 0; i < canvasHeight; i++) {  //use a pointer instead of pixel array
         
         canvasPixels[( i*canvasWidth + draw_position_x)*4 + 0] = averageBrightness;
         canvasPixels[( i*canvasWidth + draw_position_x)*4 + 1] = averageBrightness;
@@ -209,15 +209,26 @@ string DarknessMapApp::pad(int value)
 void DarknessMapApp::_drawLocationText() {
     
     //Translate from Java
-    string LocationValues = "Lat: " + latitudeStr + " Lon: " + longitudeStr;
+    string LatValues = "Lat: " + latitudeStr;
+    string LonValues = "Lon: " + longitudeStr;
     ofPushStyle();
     ofSetColor(0, 0, 0); // rgb value for black
-    font.drawString(LocationValues, 0 + 10-1, 30-1);
-    font.drawString(LocationValues, 0 + 10+1, 30-1);
-    font.drawString(LocationValues, 0 + 10+1, 30+1);
-    font.drawString(LocationValues, 0 + 10-1, 30+1);
+    font.drawString(LatValues, 0 + 10-1, 60-1);
+    font.drawString(LatValues, 0 + 10+1, 60-1);
+    font.drawString(LatValues, 0 + 10+1, 60+1);
+    font.drawString(LatValues, 0 + 10-1, 60+1);
     ofSetColor(255, 255, 0); // rgb value for yellow
-    font.drawString(LocationValues, 0 + 10,   30);
+    font.drawString(LatValues, 0 + 10,   60);
+    ofPopStyle();
+    
+    ofPushStyle();
+    ofSetColor(0, 0, 0); // rgb value for black
+    font.drawString(LonValues, 0 + 10-1, 90-1);
+    font.drawString(LonValues, 0 + 10+1, 90-1);
+    font.drawString(LonValues, 0 + 10+1, 90+1);
+    font.drawString(LonValues, 0 + 10-1, 90+1);
+    ofSetColor(255, 255, 0); // rgb value for yellow
+    font.drawString(LonValues, 0 + 10,   90);
     ofPopStyle();
 }
 
@@ -234,12 +245,12 @@ void DarknessMapApp::_drawTimeStamp(int marginWidth) {
     string Time = "Time: " + ofToString(getTimeStamp());
     ofPushStyle();
     ofSetColor(0, 0, 0); // rgb value for black
-    font.drawString(Time, marginWidth + 10-1, 60-1);
-    font.drawString(Time, marginWidth + 10+1, 60-1);
-    font.drawString(Time, marginWidth + 10+1, 60+1);
-    font.drawString(Time, marginWidth + 10-1, 60+1);
+    font.drawString(Time, marginWidth + 10-1, 120-1);
+    font.drawString(Time, marginWidth + 10+1, 120-1);
+    font.drawString(Time, marginWidth + 10+1, 120+1);
+    font.drawString(Time, marginWidth + 10-1, 120+1);
     ofSetColor(255, 255, 0); // rgb value for yellow;
-    font.drawString(Time, marginWidth + 10,   60);
+    font.drawString(Time, marginWidth + 10,   120);
     ofPopStyle();
 }
 
@@ -257,12 +268,12 @@ void DarknessMapApp::_drawBrightnessText(double averageBrightness, int marginWid
     string Brightness = "Brightness: " + ofToString(averageBrightness);
     ofPushStyle();
     ofSetColor(0, 0, 0); // rgb value for black
-    font.drawString(Brightness, marginWidth + 10-1, 90-1);
-    font.drawString(Brightness, marginWidth + 10+1, 90-1);
-    font.drawString(Brightness, marginWidth + 10+1, 90+1);
-    font.drawString(Brightness, marginWidth + 10-1, 90+1);
+    font.drawString(Brightness, marginWidth + 10-1, 150-1);
+    font.drawString(Brightness, marginWidth + 10+1, 150-1);
+    font.drawString(Brightness, marginWidth + 10+1, 150+1);
+    font.drawString(Brightness, marginWidth + 10-1, 150+1);
     ofSetColor(255, 255, 0); // rgb value for yellow;
-    font.drawString(Brightness, marginWidth + 10,   90);
+    font.drawString(Brightness, marginWidth + 10,   150);
     ofPopStyle();
 }
 
