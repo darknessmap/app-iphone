@@ -5,6 +5,8 @@
 #include "ofxiPhoneExtras.h"
 #import "MyAppViewController.h"
 
+#import "GPayload.h"
+
 class DarknessMapApp : public ofxiPhoneApp {
 	
 public:
@@ -92,6 +94,9 @@ public:
     
     ofxiPhoneCoreLocation * coreLocation;
     bool hasGPS;
+    
+    //Payload object
+    GPayload *_geoVO;
     
     // GPS data. (string values were added so not to duplicate on ofToString conversions)
     double latitude;

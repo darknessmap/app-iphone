@@ -1,4 +1,6 @@
 #include "DarknessMapApp.h"
+#include "GPayload.h"
+#import "SBJsonWriter.h"
 
 
 //--------------------------------------------------------------
@@ -27,10 +29,7 @@ void DarknessMapApp::setup() {
     
     // DEFAULT properties (can't set from header, boooo!)
     // gps + compass
-    latitude = 0.0;
-    longitude = 0.0;
-    latitudeStr = "0.000000";
-    longitudeStr = "0.000000";
+    _createPayload();
     
     // setup sensors
     ofRegisterTouchEvents(this);
@@ -81,7 +80,7 @@ void DarknessMapApp::update(){
 	grabber.update();
     
     if( grabber.isFrameNew()) {
-        updateLocation();
+//        updateLocation();
         
         unsigned char * src = grabber.getPixels();
         int totalPix = grabber.width * grabber.height * 3;
@@ -289,13 +288,29 @@ void DarknessMapApp::_drawBrightnessText(double averageBrightness, int marginWid
  * request updates periodically (i.e every x frames.)
  */
 void DarknessMapApp::sendPayload() {
-    cout << "Sending payload"<< endl;
+    NSLog(@"Sending payload");
     
-    //TODO: We need to include frame brightness avg as payload.
-    //double payload = mDrawOnTop.getAverageBrightness();
-    //_geoVO.setPayload(payload);
-    //_gateway.publish(_geoVO.toJson());
+    SBJsonWriter *writer = [[SBJsonWriter alloc] init];
+    NSString* json = [writer stringWithObject:[_geoVO getAsDictionary]];
     
+    NSData *postData = [json dataUsingEncoding:NSUTF8StringEncoding];
+    
+    //    NSString *postLength = [NSString stringWithFormat:@"%d", [postData length]];
+    
+    NSMutableURLRequest *request = [[[NSMutableURLRequest alloc] init] autorelease];
+    [request setURL:[NSURL URLWithString:@"http://192.168.0.103/phpTest/server/index.php"]];
+    [request setHTTPMethod:@"POST"];
+    //    [request setValue:postLength forHTTPHeaderField:@"Content-Length"];
+    [request setValue:@"application/x-www-form-urlencoded" forHTTPHeaderField:@"Content-Type"];
+    [request setHTTPBody:postData];
+    
+    [NSURLConnection sendAsynchronousRequest:request queue:[NSOperationQueue mainQueue] completionHandler:^(NSURLResponse *res, NSData *data, NSError *err){
+        //[self didReceiveData:data];
+        NSString *aString  = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
+        NSLog(@"we did it %@", aString);
+    }];
+    
+    [writer release];
 }
 
 //--------------------------------------------------------------
@@ -310,6 +325,24 @@ void DarknessMapApp::_createPayload()
     //String uid = Installation.id(this.getBaseContext());
     //_geoVO.setSid(sid);
     //_geoVO.setUid(uid);
+    
+    //give default values
+    latitude = 0.0;
+    longitude = 0.0;
+    latitudeStr = "0.000000";
+    longitudeStr = "0.000000";
+    
+    //Create user id and session id
+    NSString *uid  = [[UIDevice currentDevice] uniqueIdentifier];
+    CFUUIDRef uuid = CFUUIDCreate(kCFAllocatorDefault);
+    NSString *sid  = (NSString *)CFUUIDCreateString(kCFAllocatorDefault, uuid);
+    CFRelease(uuid);
+    
+    
+    _geoVO = [[GPayload alloc] initWithUid:uid sid:sid ];
+    [_geoVO retain]
+    
+    //testApp::updateLocation();
 }
 
 //--------------------------------------------------------------
@@ -327,15 +360,29 @@ void DarknessMapApp::_createGateway() {
 //Gets GPS data
 void DarknessMapApp::updateLocation() {
     if (hasGPS) {
-        latitude = coreLocation->getLatitude();
-        longitude = coreLocation->getLongitude();
-        latitudeStr = ofToString(latitude, 6);
+        latitude     = coreLocation->getLatitude();
+        longitude    = coreLocation->getLongitude();
+        latitudeStr  = ofToString(latitude, 6);
         longitudeStr = ofToString(longitude, 6);
     }
+    
+    //TODO: Move into payload VO.
+    NSDate *date = [NSDate date];
+    NSTimeInterval interval = [date timeIntervalSince1970];
+    NSInteger time = round(interval);
+    
+    NSDictionary* loc = [NSDictionary dictionaryWithObjectsAndKeys:longitude,@"lon", latitude, @"lat",nil];
+    [_geoVO setPayload:_averageBrightness location:loc timestamp:time];
+    
+    sendPayload();
+    
+    [loc release];
 }
 
 //--------------------------------------------------------------
 void DarknessMapApp::exit(){
+    
+    [_geoVO release]
     
     grabber.close();
     coreLocation->stopHeading();
