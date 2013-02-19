@@ -34,13 +34,14 @@
     
     //--- style the UINavigationController
     self.navigationController.navigationBar.barStyle = UIBarStyleBlackTranslucent;
-    self.navigationController.navigationBar.topItem.title = @"Home";
+    //self.navigationController.navigationBar.topItem.title = @"Home";
     
     return YES;
 }
 
 - (void) dealloc {
     self.navigationController = nil;
+    //can we deallocate the camera here somehow?
     [super dealloc];
 }
 

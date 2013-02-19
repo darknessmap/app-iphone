@@ -3,10 +3,10 @@
 //  Created by lukasz karluk on 8/02/12.
 //
 
-#import "ImageAppViewController.h"
+#import "AboutAppViewController.h"
 #import "ofxiPhoneExtras.h"
 
-@implementation ImageAppViewController
+@implementation AboutAppViewController
 
 - (id) initWithFrame:(CGRect)frame app:(ofxiPhoneApp *)app {
     

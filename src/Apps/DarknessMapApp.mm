@@ -1,6 +1,8 @@
 #include "DarknessMapApp.h"
 
+
 //--------------------------------------------------------------
+//DarknessMapApp :: DarknessMapApp(ofVideoGrbber* globalGrabber) {
 DarknessMapApp :: DarknessMapApp() {
     cout << "creating DarknessMapApp" << endl;
     
@@ -10,6 +12,7 @@ DarknessMapApp :: DarknessMapApp() {
 DarknessMapApp :: ~DarknessMapApp() {
     cout << "destroying DarknessMapApp" << endl;
 }
+ 
 
 //--------------------------------------------------------------
 void DarknessMapApp::setup() {
@@ -54,7 +57,7 @@ void DarknessMapApp::setup() {
 	pix = new unsigned char[ (int)( width * height * 3.0) ];
     
     canvas.allocate(canvasWidth, canvasHeight, GL_RGBA);
-    canvasPixels = new unsigned char [canvasWidth * canvasHeight *4];
+    canvasPixels = new unsigned char [canvasWidth * canvasHeight * 4];
     
     //set canvas (for histogram) pixels to alpha initially
     for(int i = 0; i < canvasWidth; i++) {
@@ -73,7 +76,7 @@ void DarknessMapApp::setup() {
 
 //--------------------------------------------------------------
 void DarknessMapApp::update(){
-	ofBackground(255,255,255);
+	//ofBackground(255,255,255);
 	
 	grabber.update();
     
@@ -286,7 +289,7 @@ void DarknessMapApp::_drawBrightnessText(double averageBrightness, int marginWid
  * request updates periodically (i.e every x frames.)
  */
 void DarknessMapApp::sendPayload() {
-    printf("Sending payload");
+    cout << "Sending payload"<< endl;
     
     //TODO: We need to include frame brightness avg as payload.
     //double payload = mDrawOnTop.getAverageBrightness();

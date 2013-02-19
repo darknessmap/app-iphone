@@ -4,12 +4,12 @@
 #include "ofxiPhone.h"
 #include "ofxiPhoneExtras.h"
 
-class ImageApp : public ofxiPhoneApp {
+class AboutApp : public ofxiPhoneApp {
 	
 public:
     
-     ImageApp ();
-    ~ImageApp ();
+     AboutApp ();
+    ~AboutApp ();
     
 	void setup();
 	void update();

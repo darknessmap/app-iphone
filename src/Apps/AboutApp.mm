@@ -1,20 +1,20 @@
-#include "ImageApp.h"
+#include "AboutApp.h"
 
 //--------------------------------------------------------------
-ImageApp :: ImageApp () {
-    cout << "creating ImageApp" << endl;
+AboutApp :: AboutApp () {
+    cout << "creating AboutApp" << endl;
 }
 
 //--------------------------------------------------------------
-ImageApp :: ~ImageApp () {
-    cout << "destroying ImageApp" << endl;
+AboutApp :: ~AboutApp () {
+    cout << "destroying AboutApp" << endl;
 }
 
 //--------------------------------------------------------------
-void ImageApp::setup() {	
+void AboutApp::setup() {	
 	ofBackground(127);
     
-    int fontSize = 8;
+    int fontSize = 14;
     if (ofxiPhoneGetOFWindow()->isRetinaSupported())
         fontSize *= 2;
     
@@ -24,14 +24,14 @@ void ImageApp::setup() {
 }
 
 //--------------------------------------------------------------
-void ImageApp::update(){
+void AboutApp::update(){
 
 }
 
 //--------------------------------------------------------------
-void ImageApp::draw() {
-    int x = (ofGetWidth()  - image.width)  * 0.5;
-    int y = (ofGetHeight() - image.height) * 0.5;
+void AboutApp::draw() {
+    int x = (ofGetWidth()  )  * 0.5;
+    int y = (ofGetHeight() ) * 0.5;
     int p = 0;
     
 	ofSetColor(ofColor::white);
@@ -49,53 +49,53 @@ void ImageApp::draw() {
 }
 
 //--------------------------------------------------------------
-void ImageApp::exit() {
+void AboutApp::exit() {
     //
 }
 
 //--------------------------------------------------------------
-void ImageApp::touchDown(ofTouchEventArgs &touch){
+void AboutApp::touchDown(ofTouchEventArgs &touch){
 
 }
 
 //--------------------------------------------------------------
-void ImageApp::touchMoved(ofTouchEventArgs &touch){
+void AboutApp::touchMoved(ofTouchEventArgs &touch){
 
 }
 
 //--------------------------------------------------------------
-void ImageApp::touchUp(ofTouchEventArgs &touch){
+void AboutApp::touchUp(ofTouchEventArgs &touch){
 
 }
 
 //--------------------------------------------------------------
-void ImageApp::touchDoubleTap(ofTouchEventArgs &touch){
+void AboutApp::touchDoubleTap(ofTouchEventArgs &touch){
 
 }
 
 //--------------------------------------------------------------
-void ImageApp::lostFocus(){
+void AboutApp::lostFocus(){
 
 }
 
 //--------------------------------------------------------------
-void ImageApp::gotFocus(){
+void AboutApp::gotFocus(){
 
 }
 
 //--------------------------------------------------------------
-void ImageApp::gotMemoryWarning(){
+void AboutApp::gotMemoryWarning(){
 
 }
 
 //--------------------------------------------------------------
-void ImageApp::deviceOrientationChanged(int newOrientation){
+void AboutApp::deviceOrientationChanged(int newOrientation){
 
 }
 
 
 //--------------------------------------------------------------
-void ImageApp::touchCancelled(ofTouchEventArgs& args){
+void AboutApp::touchCancelled(ofTouchEventArgs& args){
 
 }
 

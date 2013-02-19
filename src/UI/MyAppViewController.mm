@@ -14,8 +14,13 @@
 #import "TriangleAppViewController.h"
 #import "TriangleApp.h"
 
-#import "ImageAppViewController.h"
-#import "ImageApp.h"
+#import "AboutAppViewController.h"
+#import "AboutApp.h"
+
+//#include "ofxiPhone.h"
+//#include "ofxiPhoneExtras.h"
+
+//#include "AboutTest.h"
 
 @implementation MyAppViewController
 
@@ -65,12 +70,14 @@
     [self.view addSubview:containerView];
 
     NSArray *buttonTitles;
-    buttonTitles = [NSArray arrayWithObjects: @"square", @"launch app", @"view map", @"image", nil];
+    //buttonTitles = [NSArray arrayWithObjects: @"square", @"launch app", @"view map", @"about", nil];
+    buttonTitles = [NSArray arrayWithObjects: @"launch app", @"view map", @"about", nil];
     
-    NSInteger buttonY = 44;     // make room for navigation bar.
+    NSInteger buttonHeight = 60;
+    NSInteger buttonY = screenRect.size.height - (buttonHeight*3);     // make room for navigation bar.
     NSInteger buttonGap = 2;
     //NSInteger buttonHeight = (screenRect.size.height - 44) / [buttonTitles count] - buttonGap * ([buttonTitles count] - 1);
-    NSInteger buttonHeight = 60;
+
     CGRect buttonRect = CGRectMake(0, 0, screenRect.size.width, buttonHeight);
     
     for (int i = 0; i < [buttonTitles count]; i++) {
@@ -95,6 +102,7 @@
     containerView.contentSize = CGSizeMake(buttonRect.size.width, buttonRect.size.height * 3);
 }
 
+/*
 - (void)button1Pressed:(id)sender {
     SquareAppViewController *viewController;
     viewController = [[[SquareAppViewController alloc] initWithFrame:[[UIScreen mainScreen] bounds]
@@ -103,17 +111,21 @@
     [self.navigationController pushViewController:viewController animated:YES];
     self.navigationController.navigationBar.topItem.title = @"SquareApp";
 }
+ */
 
-- (void)button2Pressed:(id)sender {
+- (void)button1Pressed:(id)sender {
     DarknessMapAppViewController *viewController;
+//    ofVideoGrabber globalGrabber;
+//    ofVideoGrabber* pointerToGrabber = &globalGrabber;
     viewController = [[[DarknessMapAppViewController alloc] initWithFrame:[[UIScreen mainScreen] bounds]
-                                                                 app:new DarknessMapApp()] autorelease];
+ //                                                                app:new DarknessMapApp(&globalGrabber)] autorelease];
+                                                                      app:new DarknessMapApp()] autorelease];
     
     [self.navigationController pushViewController:viewController animated:YES];
     self.navigationController.navigationBar.topItem.title = @"Darkness Map";
 }
 
-- (void)button3Pressed:(id)sender {
+- (void)button2Pressed:(id)sender {
     TriangleAppViewController *viewController;
     viewController = [[[TriangleAppViewController alloc] initWithFrame:[[UIScreen mainScreen] bounds]
                                                                    app:new TriangleApp()] autorelease];
@@ -122,14 +134,26 @@
     self.navigationController.navigationBar.topItem.title = @"TriangleApp";
 }
 
-- (void)button4Pressed:(id)sender {
-    ImageAppViewController *viewController;
-    viewController = [[[ImageAppViewController alloc] initWithFrame:[[UIScreen mainScreen] bounds]
-                                                                app:new ImageApp()] autorelease];
+
+- (void)button3Pressed:(id)sender {
+    AboutAppViewController *viewController;
+    viewController = [[[AboutAppViewController alloc] initWithFrame:[[UIScreen mainScreen] bounds]
+                                                                app:new AboutApp()] autorelease];
     
     [self.navigationController pushViewController:viewController animated:YES];
-    self.navigationController.navigationBar.topItem.title = @"ImageApp";
+    self.navigationController.navigationBar.topItem.title = @"About";
 }
+
+/*
+- (void)button3Pressed:(id)sender {
+    AboutTest *viewController;
+    viewController = [[AboutTest alloc] initWithNibName:@"AboutTest" bundle:Nil];
+                                                                
+    [self.navigationController pushViewController:viewController animated:YES];
+    self.navigationController.navigationBar.topItem.title = @"About";
+}
+ */
+
 
 - (BOOL) shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation {
     BOOL bRotate = NO;

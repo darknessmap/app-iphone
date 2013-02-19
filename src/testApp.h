@@ -22,6 +22,8 @@ class testApp : public ofxiPhoneApp{
         void gotFocus();
         void gotMemoryWarning();
         void deviceOrientationChanged(int newOrientation);
+    
+        //ofVideoGrabber globalGrabber;
 
 };
 
