@@ -10,5 +10,6 @@
 
 @interface AboutAppTest : UIViewController
 @property (nonatomic, retain) IBOutlet UITextView *aboutText;
+@property (nonatomic, retain) IBOutlet UIButton *goToWebSiteButton;
 
 @end

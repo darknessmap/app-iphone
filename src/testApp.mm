@@ -1,8 +1,5 @@
 #include "testApp.h"
 
-//NOTE: in this example testApp ( this class ) is not used. 
-//      look inside Apps/ to see the native iOS implementation
-
 //--------------------------------------------------------------
 void testApp::setup(){	
 	

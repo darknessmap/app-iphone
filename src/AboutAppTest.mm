@@ -14,6 +14,9 @@
 
 @implementation AboutAppTest
 @synthesize aboutText;
+@synthesize goToWebSiteButton;
+
+
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -21,6 +24,7 @@
     if (self) {
         // Custom initialization
         //NSString *string = self.aboutText.text;
+        
     }
     return self;
 }
@@ -41,5 +45,7 @@
 {
     return NO;
 }
+
+
 
 @end

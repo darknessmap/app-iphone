@@ -41,16 +41,14 @@
 						<string key="NSFrame">{{14, 63}, {292, 485}}</string>
 						<reference key="NSSuperview" ref="191373211"/>
 						<reference key="NSWindow"/>
-						<reference key="NSNextKeyView"/>
 						<string key="NSReuseIdentifierKey">_NS:9</string>
-						<object class="NSColor" key="IBUIBackgroundColor" id="947721196">
+						<object class="NSColor" key="IBUIBackgroundColor" id="496012360">
 							<int key="NSColorSpace">3</int>
 							<bytes key="NSWhite">MAA</bytes>
 						</object>
 						<bool key="IBUIClipsSubviews">YES</bool>
-						<bool key="IBUIUserInteractionEnabled">NO</bool>
 						<object class="IBUIAccessibilityConfiguration" key="IBUIAccessibilityConfiguration">
-							<integer value="258" key="IBUIAccessibilityTraits"/>
+							<integer value="66" key="IBUIAccessibilityTraits"/>
 							<boolean value="NO" key="IBUIIsAccessibilityElement"/>
 						</object>
 						<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
@@ -61,8 +59,8 @@ aHR0aW1lIHVyYmFuIGVudmlyb25tZW50Lg0NVG8gYWRkIHRvIHRoZSBEYXJrbmVzcyBNYXAsIHVzZSB0
 aGUgYXBwIHdoaWxlIHlvdSB3YWxrIGFyb3VuZCB0aGUgY2l0eSBhdCBuaWdodC4gIA0NVGhlIERhcmtu
 ZXNzIE1hcCBpcyBhIHByb2plY3QgYnkgRW1pbGlhbm8gQnVyZ29zIGFuZCBHZW5ldmlldmUgSG9mZm1h
 bi4gSXQgd2FzIG9yaWdpbmFsbHkgY29uY2VpdmVkIHdpdGggU2NvdHQgV2F5bmUgSW5kaWFuYSBhbmQg
-UnVuZSBNYWRzZW4uDQ1Gb3IgbW9yZSBpbmZvcm1hdGlvbiwgcGxlYXNlIHZpc2l0IGRhcmtuZXNzbWFw
-LmNvbQ</string>
+UnVuZSBNYWRzZW4uDQ1Gb3IgbW9yZSBpbmZvcm1hdGlvbiwgcGxlYXNlIHZpc2l0IHd3dy5kYXJrbmVz
+c21hcC5jb20</string>
 						<object class="NSColor" key="IBUITextColor">
 							<int key="NSColorSpace">1</int>
 							<bytes key="NSRGB">MSAxIDEgMC42AA</bytes>
@@ -90,8 +88,7 @@ LmNvbQ</string>
 				<reference key="NSSuperview"/>
 				<reference key="NSWindow"/>
 				<reference key="NSNextKeyView" ref="1040009321"/>
-				<reference key="IBUIBackgroundColor" ref="947721196"/>
-				<bool key="IBUIUserInteractionEnabled">NO</bool>
+				<reference key="IBUIBackgroundColor" ref="496012360"/>
 				<object class="IBUISimulatedStatusBarMetrics" key="IBUISimulatedStatusBarMetrics"/>
 				<object class="IBUIScreenMetrics" key="IBUISimulatedDestinationMetrics">
 					<string key="IBUISimulatedSizeMetricsClass">IBUIScreenMetrics</string>
@@ -189,17 +186,20 @@ LmNvbQ</string>
 				<object class="IBPartialClassDescription">
 					<string key="className">AboutAppTest</string>
 					<string key="superclassName">UIViewController</string>
-					<object class="NSMutableDictionary" key="outlets">
-						<string key="NS.key.0">aboutText</string>
-						<string key="NS.object.0">UITextView</string>
-					</object>
-					<object class="NSMutableDictionary" key="toOneOutletInfosByName">
-						<string key="NS.key.0">aboutText</string>
-						<object class="IBToOneOutletInfo" key="NS.object.0">
+					<dictionary class="NSMutableDictionary" key="outlets">
+						<string key="aboutText">UITextView</string>
+						<string key="goToWebSiteButton">UIButton</string>
+					</dictionary>
+					<dictionary class="NSMutableDictionary" key="toOneOutletInfosByName">
+						<object class="IBToOneOutletInfo" key="aboutText">
 							<string key="name">aboutText</string>
 							<string key="candidateClassName">UITextView</string>
 						</object>
-					</object>
+						<object class="IBToOneOutletInfo" key="goToWebSiteButton">
+							<string key="name">goToWebSiteButton</string>
+							<string key="candidateClassName">UIButton</string>
+						</object>
+					</dictionary>
 					<object class="IBClassDescriptionSource" key="sourceIdentifier">
 						<string key="majorKey">IBProjectSource</string>
 						<string key="minorKey">./Classes/AboutAppTest.h</string>

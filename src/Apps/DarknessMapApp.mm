@@ -20,7 +20,7 @@ void DarknessMapApp::setup() {
 	ofSetFrameRate(30);
     
     // load font for displaying info
-	font.loadFont("fonts/mono0755.ttf", 10, true, true);
+	font.loadFont("fonts/AvenirNext.ttc", 14, true, true);
     font.setLineHeight(18.0f);
 	font.setLetterSpacing(1.027);
     
