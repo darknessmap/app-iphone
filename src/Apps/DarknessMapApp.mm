@@ -2,7 +2,7 @@
 
 
 //--------------------------------------------------------------
-//DarknessMapApp :: DarknessMapApp(ofVideoGrbber* globalGrabber) {
+//DarknessMapApp :: DarknessMapApp(ofVideoGrbber *globalGrabber) {
 DarknessMapApp :: DarknessMapApp() {
     cout << "creating DarknessMapApp" << endl;
     
@@ -12,7 +12,6 @@ DarknessMapApp :: DarknessMapApp() {
 DarknessMapApp :: ~DarknessMapApp() {
     cout << "destroying DarknessMapApp" << endl;
 }
- 
 
 //--------------------------------------------------------------
 void DarknessMapApp::setup() {
@@ -24,6 +23,8 @@ void DarknessMapApp::setup() {
 	font.loadFont("fonts/mono0755.ttf", 10, true, true);
     font.setLineHeight(18.0f);
 	font.setLetterSpacing(1.027);
+    
+
     
     // DEFAULT properties (can't set from header, boooo!)
     // gps + compass
@@ -42,7 +43,8 @@ void DarknessMapApp::setup() {
     printf("\nPhone: %s\n", iPhoneGetDeviceRevision().c_str());
     
     //VidGrabber setup
-	grabber.initGrabber(480, 360, OF_PIXELS_BGRA);
+	//grabber.initGrabber(480, 360, OF_PIXELS_BGRA);
+    grabber.initGrabber(480, 360, OF_PIXELS_BGRA);
     //grabber.setUseTexture(false);
     
     //width = grabber.getWidth();
@@ -53,6 +55,10 @@ void DarknessMapApp::setup() {
     canvasWidth = width;
     canvasHeight = 100;
     
+    //Darkness Map Website Button
+    rect.set(0, 100, 0, height - 50);
+    
+    //pixel array to store brightness data
     brightnessHistory = new double[histogramWidth];
 	pix = new unsigned char[ (int)( width * height * 3.0) ];
     
@@ -347,6 +353,7 @@ void DarknessMapApp::exit(){
 
 //--------------------------------------------------------------
 void DarknessMapApp::touchDown(ofTouchEventArgs & touch){
+    rect.inside(touch.x, touch.y);
         
 }
 

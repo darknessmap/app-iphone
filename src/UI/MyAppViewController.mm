@@ -17,6 +17,8 @@
 #import "AboutAppViewController.h"
 #import "AboutApp.h"
 
+#include "AboutAppTest.h"
+
 //#include "ofxiPhone.h"
 //#include "ofxiPhoneExtras.h"
 
@@ -71,10 +73,11 @@
 
     NSArray *buttonTitles;
     //buttonTitles = [NSArray arrayWithObjects: @"square", @"launch app", @"view map", @"about", nil];
-    buttonTitles = [NSArray arrayWithObjects: @"launch app", @"view map", @"about", nil];
+    //buttonTitles = [NSArray arrayWithObjects: @"launch app", @"view map", @"about", nil];
+    buttonTitles = [NSArray arrayWithObjects: @"launch app", @"about", nil];
     
-    NSInteger buttonHeight = 60;
-    NSInteger buttonY = screenRect.size.height - (buttonHeight*3);     // make room for navigation bar.
+    NSInteger buttonHeight = 70;
+    NSInteger buttonY = screenRect.size.height - (buttonHeight*2);     // make room for navigation bar.
     NSInteger buttonGap = 2;
     //NSInteger buttonHeight = (screenRect.size.height - 44) / [buttonTitles count] - buttonGap * ([buttonTitles count] - 1);
 
@@ -90,16 +93,17 @@
             [button addTarget:self action:@selector(button1Pressed:) forControlEvents:UIControlEventTouchUpInside];
         else if (i==1)
             [button addTarget:self action:@selector(button2Pressed:) forControlEvents:UIControlEventTouchUpInside];
+        /*
         else if (i==2)
             [button addTarget:self action:@selector(button3Pressed:) forControlEvents:UIControlEventTouchUpInside];
         else if (i==3)
             [button addTarget:self action:@selector(button4Pressed:) forControlEvents:UIControlEventTouchUpInside];
-        
+        */
         buttonY += buttonRect.size.height;
         buttonY += buttonGap;
     }
     
-    containerView.contentSize = CGSizeMake(buttonRect.size.width, buttonRect.size.height * 3);
+    containerView.contentSize = CGSizeMake(buttonRect.size.width, buttonRect.size.height * 2);
 }
 
 /*
@@ -118,13 +122,14 @@
 //    ofVideoGrabber globalGrabber;
 //    ofVideoGrabber* pointerToGrabber = &globalGrabber;
     viewController = [[[DarknessMapAppViewController alloc] initWithFrame:[[UIScreen mainScreen] bounds]
- //                                                                app:new DarknessMapApp(&globalGrabber)] autorelease];
+  //                                                               app:new DarknessMapApp(&globalGrabber)] autorelease];
                                                                       app:new DarknessMapApp()] autorelease];
     
     [self.navigationController pushViewController:viewController animated:YES];
     self.navigationController.navigationBar.topItem.title = @"Darkness Map";
 }
 
+/*
 - (void)button2Pressed:(id)sender {
     TriangleAppViewController *viewController;
     viewController = [[[TriangleAppViewController alloc] initWithFrame:[[UIScreen mainScreen] bounds]
@@ -133,9 +138,11 @@
     [self.navigationController pushViewController:viewController animated:YES];
     self.navigationController.navigationBar.topItem.title = @"TriangleApp";
 }
+*/
 
+/*
 
-- (void)button3Pressed:(id)sender {
+- (void)button2Pressed:(id)sender {
     AboutAppViewController *viewController;
     viewController = [[[AboutAppViewController alloc] initWithFrame:[[UIScreen mainScreen] bounds]
                                                                 app:new AboutApp()] autorelease];
@@ -144,15 +151,15 @@
     self.navigationController.navigationBar.topItem.title = @"About";
 }
 
-/*
-- (void)button3Pressed:(id)sender {
-    AboutTest *viewController;
-    viewController = [[AboutTest alloc] initWithNibName:@"AboutTest" bundle:Nil];
-                                                                
+   */
+- (void)button2Pressed:(id)sender {
+    AboutAppTest *viewController;
+    viewController = [[AboutAppTest alloc] initWithNibName:@"AboutAppTest" bundle:Nil];
+    
     [self.navigationController pushViewController:viewController animated:YES];
     self.navigationController.navigationBar.topItem.title = @"About";
+
 }
- */
 
 
 - (BOOL) shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation {

@@ -3,9 +3,9 @@
 
 int main(){
 
-    bool bUseNative = true;
+    //bool bUseNative = true;
     
-    if (bUseNative){
+    //if (bUseNative){
         /**
          *
          *  Below is how you start using a native ios setup.
@@ -22,8 +22,8 @@ int main(){
         ofAppiPhoneWindow *window = new ofAppiPhoneWindow();
         ofSetupOpenGL(ofPtr<ofAppBaseWindow>(window), 1024,768, OF_FULLSCREEN);
         window->startAppWithDelegate("MyAppDelegate");
-    }
-    else {
+   // }
+   // else {
         /**
          *
          *  This is the normal way of running an app using ofxiPhone.
@@ -31,7 +31,7 @@ int main(){
          *
          **/
         
-        ofSetupOpenGL(1024,768, OF_FULLSCREEN);
-        ofRunApp(new SquareApp());
-    }
+//        ofSetupOpenGL(1024,768, OF_FULLSCREEN);
+//        ofRunApp(new DarknessMapApp());
+//    }
 }

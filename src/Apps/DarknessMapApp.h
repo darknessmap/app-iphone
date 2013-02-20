@@ -3,7 +3,7 @@
 #include "ofMain.h"
 #include "ofxiPhone.h"
 #include "ofxiPhoneExtras.h"
-#import "MyAppViewController.h"
+#import  "MyAppViewController.h"
 
 class DarknessMapApp : public ofxiPhoneApp {
 	
@@ -99,6 +99,7 @@ public:
     string latitudeStr;
     string longitudeStr;
     
+    ofRectangle rect;
     
     /**
 	 * Used to set the sampling rate

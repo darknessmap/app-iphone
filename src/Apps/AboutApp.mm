@@ -20,7 +20,7 @@ void AboutApp::setup() {
     
     font.loadFont("fonts/mono0755.ttf", fontSize);
     
-    image.loadImage("images/dive.jpg");
+    image.loadImage("About.png");
 }
 
 //--------------------------------------------------------------
@@ -35,17 +35,23 @@ void AboutApp::draw() {
     int p = 0;
     
 	ofSetColor(ofColor::white);
-    image.draw(x, y);
+    image.draw(0, 20);
     
     x = ofGetWidth()  * 0.2;
     y = ofGetHeight() * 0.11;
     p = ofGetHeight() * 0.035;
     
+    //NSURL *website = [ [ NSURL alloc ] initWithString: @"http://www.darknessmap.com" ];
+    
+    //if (lEldridge.isPressed())[[UIApplication sharedApplication] openURL:website];
+    
+    /*
     ofSetColor(ofColor::white);
     font.drawString("frame num      = " + ofToString( ofGetFrameNum() ),    x, y+=p);
     font.drawString("frame rate     = " + ofToString( ofGetFrameRate() ),   x, y+=p);
     font.drawString("screen width   = " + ofToString( ofGetWidth() ),       x, y+=p);
     font.drawString("screen height  = " + ofToString( ofGetHeight() ),      x, y+=p);
+     */
 }
 
 //--------------------------------------------------------------
@@ -55,7 +61,7 @@ void AboutApp::exit() {
 
 //--------------------------------------------------------------
 void AboutApp::touchDown(ofTouchEventArgs &touch){
-
+    
 }
 
 //--------------------------------------------------------------

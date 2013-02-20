@@ -7,9 +7,7 @@
 void testApp::setup(){	
 	
 	// initialize the accelerometer
-	ofxAccelerometer.setup();
-    //globalGrabber.initGrabber(320, 240);
-	
+	ofxAccelerometer.setup();	
 	ofBackground(127,127,127);
 }
 
