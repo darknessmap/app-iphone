@@ -1,6 +1,7 @@
 #include "DarknessMapApp.h"
 #include "GPayload.h"
-#import "SBJsonWriter.h"
+//#import "SBJsonWriter.h"
+#import "JSONkit.h"
 
 
 //--------------------------------------------------------------
@@ -290,6 +291,7 @@ void DarknessMapApp::_drawBrightnessText(double averageBrightness, int marginWid
 void DarknessMapApp::sendPayload() {
     NSLog(@"Sending payload");
     
+
     SBJsonWriter *writer = [[SBJsonWriter alloc] init];
     NSString* json = [writer stringWithObject:[_geoVO getAsDictionary]];
     
@@ -340,7 +342,7 @@ void DarknessMapApp::_createPayload()
     
     
     _geoVO = [[GPayload alloc] initWithUid:uid sid:sid ];
-    [_geoVO retain]
+    [_geoVO retain];
     
     //testApp::updateLocation();
 }

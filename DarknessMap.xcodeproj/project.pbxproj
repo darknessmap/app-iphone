@@ -20,8 +20,8 @@
 		5C4D02CF16CF449000C536FB /* AboutTestViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C4D02CE16CF449000C536FB /* AboutTestViewController.m */; };
 		6e463de882372a0c94e26f83dcdab6ff /* DarknessMapAppViewController.mm in Sources */ = {isa = PBXBuildFile; fileRef = d6e099cc42bfd340c5443385a6446439 /* DarknessMapAppViewController.mm */; };
 		93D3D81516D31F8A000665A3 /* GServiceGateway.m in Sources */ = {isa = PBXBuildFile; fileRef = 93D3D81416D31F8A000665A3 /* GServiceGateway.m */; };
-		93D3D82716D32ACF000665A3 /* libsbjson-ios.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 93D3D82216D32A30000665A3 /* libsbjson-ios.a */; };
 		93D3D82A16D32B7B000665A3 /* GPayload.m in Sources */ = {isa = PBXBuildFile; fileRef = 93D3D82916D32B7B000665A3 /* GPayload.m */; };
+		93F770E016D94A1D00CACAA8 /* JSONKit.m in Sources */ = {isa = PBXBuildFile; fileRef = 93F770DF16D94A1D00CACAA8 /* JSONKit.m */; };
 		BB16EBD20F2B2A9500518274 /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BB16EBD10F2B2A9500518274 /* OpenGLES.framework */; };
 		BB16EBD90F2B2AB500518274 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BB16EBD80F2B2AB500518274 /* QuartzCore.framework */; };
 		BBE5EAB80F49AD8400F28951 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BBE5EAB70F49AD8400F28951 /* AudioToolbox.framework */; };
@@ -39,41 +39,6 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		93D3D81D16D32A30000665A3 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 93D3D81616D32A30000665A3 /* SBJson.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = BC12323D1391D5CC00131607;
-			remoteInfo = SBJson;
-		};
-		93D3D81F16D32A30000665A3 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 93D3D81616D32A30000665A3 /* SBJson.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = BC1232521391D5CC00131607;
-			remoteInfo = SBJsonTests;
-		};
-		93D3D82116D32A30000665A3 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 93D3D81616D32A30000665A3 /* SBJson.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = BCC2626913920FC7003D9994;
-			remoteInfo = "sbjson-ios";
-		};
-		93D3D82316D32A30000665A3 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 93D3D81616D32A30000665A3 /* SBJson.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = BCC2627313920FC7003D9994;
-			remoteInfo = "sbjson-iosTests";
-		};
-		93D3D82516D32AA8000665A3 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 93D3D81616D32A30000665A3 /* SBJson.xcodeproj */;
-			proxyType = 1;
-			remoteGlobalIDString = BCC2626813920FC7003D9994;
-			remoteInfo = "sbjson-ios";
-		};
 		E41D410113B3A0D800A75A5D /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = E41D40FD13B3A0D800A75A5D /* iOS+OFLib.xcodeproj */;
@@ -111,9 +76,10 @@
 		88f12646afb7384dd5ab6fddc7399c69 /* DarknessMapApp.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = DarknessMapApp.h; path = src/Apps/DarknessMapApp.h; sourceTree = SOURCE_ROOT; };
 		93D3D81316D31F8A000665A3 /* GServiceGateway.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GServiceGateway.h; sourceTree = "<group>"; };
 		93D3D81416D31F8A000665A3 /* GServiceGateway.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GServiceGateway.m; sourceTree = "<group>"; };
-		93D3D81616D32A30000665A3 /* SBJson.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = SBJson.xcodeproj; path = "../../../../../OSX/json-framework/SBJson.xcodeproj"; sourceTree = "<group>"; };
 		93D3D82816D32B7B000665A3 /* GPayload.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GPayload.h; sourceTree = "<group>"; };
 		93D3D82916D32B7B000665A3 /* GPayload.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GPayload.m; sourceTree = "<group>"; };
+		93F770DE16D94A1D00CACAA8 /* JSONKit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSONKit.h; sourceTree = "<group>"; };
+		93F770DF16D94A1D00CACAA8 /* JSONKit.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JSONKit.m; sourceTree = "<group>"; };
 		9802791eb3f75fe36c55d369e2bcb563 /* MyAppViewController.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = MyAppViewController.h; path = src/UI/MyAppViewController.h; sourceTree = SOURCE_ROOT; };
 		9d72247cca22d4bc4b743aaba3d84492 /* MyAppViewController.mm */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.objcpp; fileEncoding = 30; name = MyAppViewController.mm; path = src/UI/MyAppViewController.mm; sourceTree = SOURCE_ROOT; };
 		BB16EBD10F2B2A9500518274 /* OpenGLES.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGLES.framework; path = System/Library/Frameworks/OpenGLES.framework; sourceTree = SDKROOT; };
@@ -147,7 +113,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				93D3D82716D32ACF000665A3 /* libsbjson-ios.a in Frameworks */,
 				E41D421413B3A95300A75A5D /* libofxiPhone_iphoneos_Debug.a in Frameworks */,
 				1D60589F0D05DD5A006BFB54 /* Foundation.framework in Frameworks */,
 				1DF5F4E00D08C38300B7A737 /* UIKit.framework in Frameworks */,
@@ -178,7 +143,6 @@
 		29B97314FDCFA39411CA2CEA /* CustomTemplate */ = {
 			isa = PBXGroup;
 			children = (
-				93D3D81616D32A30000665A3 /* SBJson.xcodeproj */,
 				E4D8936A11527B74007E1F53 /* src */,
 				BB24E1F710DAA51900E9C588 /* openFrameworks */,
 				BB16F26B0F2B646B00518274 /* addons */,
@@ -219,15 +183,13 @@
 			name = service;
 			sourceTree = "<group>";
 		};
-		93D3D81716D32A30000665A3 /* Products */ = {
+		93F770BB16D946EB00CACAA8 /* json */ = {
 			isa = PBXGroup;
 			children = (
-				93D3D81E16D32A30000665A3 /* SBJson.framework */,
-				93D3D82016D32A30000665A3 /* SBJsonTests.octest */,
-				93D3D82216D32A30000665A3 /* libsbjson-ios.a */,
-				93D3D82416D32A30000665A3 /* sbjson-iosTests.octest */,
+				93F770DE16D94A1D00CACAA8 /* JSONKit.h */,
+				93F770DF16D94A1D00CACAA8 /* JSONKit.m */,
 			);
-			name = Products;
+			name = json;
 			sourceTree = "<group>";
 		};
 		93f84dd1123fb4b01e0b3b30b02968dd /* AppViewControllers */ = {
@@ -293,6 +255,7 @@
 		E4D8936A11527B74007E1F53 /* src */ = {
 			isa = PBXGroup;
 			children = (
+				93F770BB16D946EB00CACAA8 /* json */,
 				93D3D81216D31F40000665A3 /* service */,
 				E4D8936B11527B74007E1F53 /* main.mm */,
 				E4D8936D11527B74007E1F53 /* testApp.mm */,
@@ -345,7 +308,6 @@
 			buildRules = (
 			);
 			dependencies = (
-				93D3D82616D32AA8000665A3 /* PBXTargetDependency */,
 				E41D410413B3A11300A75A5D /* PBXTargetDependency */,
 			);
 			name = DarknessMap;
@@ -378,10 +340,6 @@
 					ProductGroup = E41D40FE13B3A0D800A75A5D /* Products */;
 					ProjectRef = E41D40FD13B3A0D800A75A5D /* iOS+OFLib.xcodeproj */;
 				},
-				{
-					ProductGroup = 93D3D81716D32A30000665A3 /* Products */;
-					ProjectRef = 93D3D81616D32A30000665A3 /* SBJson.xcodeproj */;
-				},
 			);
 			projectRoot = "";
 			targets = (
@@ -391,34 +349,6 @@
 /* End PBXProject section */
 
 /* Begin PBXReferenceProxy section */
-		93D3D81E16D32A30000665A3 /* SBJson.framework */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.framework;
-			path = SBJson.framework;
-			remoteRef = 93D3D81D16D32A30000665A3 /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		93D3D82016D32A30000665A3 /* SBJsonTests.octest */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.cfbundle;
-			path = SBJsonTests.octest;
-			remoteRef = 93D3D81F16D32A30000665A3 /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		93D3D82216D32A30000665A3 /* libsbjson-ios.a */ = {
-			isa = PBXReferenceProxy;
-			fileType = archive.ar;
-			path = "libsbjson-ios.a";
-			remoteRef = 93D3D82116D32A30000665A3 /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		93D3D82416D32A30000665A3 /* sbjson-iosTests.octest */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.cfbundle;
-			path = "sbjson-iosTests.octest";
-			remoteRef = 93D3D82316D32A30000665A3 /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
 		E41D410213B3A0D800A75A5D /* libofxiPhone_iphoneos_Debug.a */ = {
 			isa = PBXReferenceProxy;
 			fileType = archive.ar;
@@ -474,17 +404,13 @@
 				5C4D02CF16CF449000C536FB /* AboutTestViewController.m in Sources */,
 				93D3D81516D31F8A000665A3 /* GServiceGateway.m in Sources */,
 				93D3D82A16D32B7B000665A3 /* GPayload.m in Sources */,
+				93F770E016D94A1D00CACAA8 /* JSONKit.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		93D3D82616D32AA8000665A3 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			name = "sbjson-ios";
-			targetProxy = 93D3D82516D32AA8000665A3 /* PBXContainerItemProxy */;
-		};
 		E41D410413B3A11300A75A5D /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			name = "iPhone+OF Static Library";
