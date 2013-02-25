@@ -46,6 +46,12 @@
     return NO;
 }
 
+- (void)dealloc
+{
+    [super dealloc];
+    //[aboutText release];
+}
+
 
 
 @end

@@ -3,7 +3,9 @@
 #include "ofMain.h"
 #include "ofxiPhone.h"
 #include "ofxiPhoneExtras.h"
+#include "ofxAVFoundationVideoGrabber.h"
 #import  "MyAppViewController.h"
+
 
 class DarknessMapApp : public ofxiPhoneApp {
 	

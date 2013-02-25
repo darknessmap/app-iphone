@@ -5,6 +5,7 @@
 
 #import "MyAppViewController.h"
 
+
 #import "SquareAppViewController.h"
 #import "SquareApp.h"
 
@@ -106,16 +107,6 @@
     containerView.contentSize = CGSizeMake(buttonRect.size.width, buttonRect.size.height * 2);
 }
 
-/*
-- (void)button1Pressed:(id)sender {
-    SquareAppViewController *viewController;
-    viewController = [[[SquareAppViewController alloc] initWithFrame:[[UIScreen mainScreen] bounds]
-                                                                 app:new SquareApp()] autorelease];
-    
-    [self.navigationController pushViewController:viewController animated:YES];
-    self.navigationController.navigationBar.topItem.title = @"SquareApp";
-}
- */
 
 - (void)button1Pressed:(id)sender {
     DarknessMapAppViewController *viewController;
@@ -128,17 +119,6 @@
     [self.navigationController pushViewController:viewController animated:YES];
     self.navigationController.navigationBar.topItem.title = @"Darkness Map";
 }
-
-/*
-- (void)button2Pressed:(id)sender {
-    TriangleAppViewController *viewController;
-    viewController = [[[TriangleAppViewController alloc] initWithFrame:[[UIScreen mainScreen] bounds]
-                                                                   app:new TriangleApp()] autorelease];
-    
-    [self.navigationController pushViewController:viewController animated:YES];
-    self.navigationController.navigationBar.topItem.title = @"TriangleApp";
-}
-*/
 
 /*
 

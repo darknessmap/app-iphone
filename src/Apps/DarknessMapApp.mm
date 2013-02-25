@@ -2,7 +2,7 @@
 
 
 //--------------------------------------------------------------
-//DarknessMapApp :: DarknessMapApp(ofVideoGrbber *globalGrabber) {
+//DarknessMapApp :: DarknessMapApp(ofVideoGrabber *globalGrabber) {
 DarknessMapApp :: DarknessMapApp() {
     cout << "creating DarknessMapApp" << endl;
     
@@ -44,7 +44,8 @@ void DarknessMapApp::setup() {
     
     //VidGrabber setup
 	//grabber.initGrabber(480, 360, OF_PIXELS_BGRA);
-    grabber.initGrabber(480, 360, OF_PIXELS_BGRA);
+    //grabber.initGrabber(480, 360, OF_PIXELS_BGRA);
+    grabber.initGrabber(480, 360);
     //grabber.setUseTexture(false);
     
     //width = grabber.getWidth();
@@ -90,7 +91,7 @@ void DarknessMapApp::update(){
         updateLocation();
         
         unsigned char * src = grabber.getPixels();
-        int totalPix = grabber.width * grabber.height * 3;
+        int totalPix = grabber.getWidth() * grabber.getHeight() * 3;
         
         //VideoGrabberExample Code
         
@@ -151,21 +152,11 @@ void DarknessMapApp::draw(){
     _drawLocationText();
     
     // Draw Time and AverageBrightness Value
-    _drawBrightnessText(_averageBrightness, marginWidth);
     _drawTimeStamp(marginWidth);
+    _drawBrightnessText(_averageBrightness, marginWidth);
     
     
 }
-
-
-//method
-/*
- check current position, previous pos + 1;
- tint with brightness
- do it while less than width of screen
- if bigger than width of screen
- draw on top
- */
 
 //--------------------------------------------------------------
 void DarknessMapApp::drawBrightnessHistogram(double averageBrightness, int width, int height, int marginWidth) {
@@ -222,22 +213,22 @@ void DarknessMapApp::_drawLocationText() {
     string LonValues = "Lon: " + longitudeStr;
     ofPushStyle();
     ofSetColor(0, 0, 0); // rgb value for black
-    font.drawString(LatValues, 0 + 10-1, 60-1);
-    font.drawString(LatValues, 0 + 10+1, 60-1);
-    font.drawString(LatValues, 0 + 10+1, 60+1);
-    font.drawString(LatValues, 0 + 10-1, 60+1);
+    font.drawString(LatValues, 0 + 10-1, 70-1);
+    font.drawString(LatValues, 0 + 10+1, 70-1);
+    font.drawString(LatValues, 0 + 10+1, 70+1);
+    font.drawString(LatValues, 0 + 10-1, 70+1);
     ofSetColor(255, 255, 0); // rgb value for yellow
-    font.drawString(LatValues, 0 + 10,   60);
+    font.drawString(LatValues, 0 + 10,   70);
     ofPopStyle();
     
     ofPushStyle();
     ofSetColor(0, 0, 0); // rgb value for black
-    font.drawString(LonValues, 0 + 10-1, 90-1);
-    font.drawString(LonValues, 0 + 10+1, 90-1);
-    font.drawString(LonValues, 0 + 10+1, 90+1);
-    font.drawString(LonValues, 0 + 10-1, 90+1);
+    font.drawString(LonValues, 0 + 10-1, 95-1);
+    font.drawString(LonValues, 0 + 10+1, 95-1);
+    font.drawString(LonValues, 0 + 10+1, 95+1);
+    font.drawString(LonValues, 0 + 10-1, 95+1);
     ofSetColor(255, 255, 0); // rgb value for yellow
-    font.drawString(LonValues, 0 + 10,   90);
+    font.drawString(LonValues, 0 + 10,   95);
     ofPopStyle();
 }
 
@@ -277,12 +268,12 @@ void DarknessMapApp::_drawBrightnessText(double averageBrightness, int marginWid
     string Brightness = "Brightness: " + ofToString(averageBrightness);
     ofPushStyle();
     ofSetColor(0, 0, 0); // rgb value for black
-    font.drawString(Brightness, marginWidth + 10-1, 150-1);
-    font.drawString(Brightness, marginWidth + 10+1, 150-1);
-    font.drawString(Brightness, marginWidth + 10+1, 150+1);
-    font.drawString(Brightness, marginWidth + 10-1, 150+1);
+    font.drawString(Brightness, marginWidth + 10-1, 145-1);
+    font.drawString(Brightness, marginWidth + 10+1, 145-1);
+    font.drawString(Brightness, marginWidth + 10+1, 145+1);
+    font.drawString(Brightness, marginWidth + 10-1, 145+1);
     ofSetColor(255, 255, 0); // rgb value for yellow;
-    font.drawString(Brightness, marginWidth + 10,   150);
+    font.drawString(Brightness, marginWidth + 10,   145);
     ofPopStyle();
 }
 
